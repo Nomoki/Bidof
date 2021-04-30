@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Container, Alert } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 
@@ -8,7 +8,7 @@ const SignUp = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { signup } = useAuth();
+    const { signup, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
@@ -29,6 +29,10 @@ const SignUp = () => {
             setError('Failed to create an account');
         }
         setLoading(false);
+    }
+
+    if (currentUser) {
+        return <Redirect to="/" />
     }
     
     return (

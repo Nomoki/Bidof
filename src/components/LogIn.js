@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, Redirect } from 'react-router-dom';
 
 const LogIn = () => {
 
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { login } = useAuth();
+    const { login, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
@@ -24,6 +24,10 @@ const LogIn = () => {
             setError('Failed to to log in');
         }
         setLoading(false);
+    }
+
+    if (currentUser) {
+        return <Redirect to="/" />
     }
 
     return (
