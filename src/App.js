@@ -6,6 +6,7 @@ import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import { AuthProvider } from './components/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import ForgotPassword from './components/ForgotPassword';
 
 class App extends Component {
   render () {
@@ -15,8 +16,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
             <PrivateRoute exact path="/Dashboard" component={Dashboard}/>
-            <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/SignUp" component={SignUp}/>
+            <Route exact path="/LogIn" component={LogIn}/>
+            <Route exact path="/Forgot-Password" component={ForgotPassword}/>
           </Switch>
         </Router>
       </AuthProvider>
