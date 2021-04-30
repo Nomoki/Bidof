@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
 import { Alert } from 'react-bootstrap';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const Dashboard = () => {
@@ -20,10 +20,6 @@ const Dashboard = () => {
         catch {
             setError('Failed to log out')
         }
-    }
-
-    if (!currentUser) {
-        return <Redirect to="/" />
     }
 
     return (

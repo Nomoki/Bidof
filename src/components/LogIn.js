@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const LogIn = () => {
 

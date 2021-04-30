@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import { AuthProvider } from './components/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends Component {
   render () {
@@ -13,7 +14,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/Dashboard" component={Dashboard}/>
+            <PrivateRoute exact path="/Dashboard" component={Dashboard}/>
             <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/SignUp" component={SignUp}/>
           </Switch>

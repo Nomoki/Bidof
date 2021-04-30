@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory, Redirect  } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 
