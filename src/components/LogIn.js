@@ -22,7 +22,7 @@ const LogIn = () => {
 
     const { currentUser } = useContext(AuthContext);
     if (currentUser) {
-        return <Redirect to="/Testsignupandin" />
+        return <Redirect to="/" />
     }
 
     return (
