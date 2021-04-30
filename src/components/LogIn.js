@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 const LogIn = () => {
 
@@ -47,6 +47,7 @@ const LogIn = () => {
                 </div>
                 <button type="submit"  disabled={loading} className="btn btn-primary">Submit</button>
             </form>
+            <div className="mt-3">Need an account? <Link to="/SignUp">Sign Up</Link></div>
             </Container>
         </React.Fragment>
     )

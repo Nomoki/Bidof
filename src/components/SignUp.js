@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 
@@ -52,6 +52,7 @@ const SignUp = () => {
                 </div>
                 <button type="submit" disabled={loading} className="btn btn-primary">Submit</button>
             </form>
+            <div className="mt-3">Already have an account? <Link to="/LogIn">Log In</Link></div>
             </Container>
         </React.Fragment>
     )
