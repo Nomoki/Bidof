@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 const LogIn = () => {
 
@@ -19,17 +19,12 @@ const LogIn = () => {
            setError('');
            setLoading(true);
            await login(emailRef.current.value, passwordRef.current.value);
-           history.push("/Dashboard")
+           history.push("/");
         } catch {
             setError('Failed to to log in');
         }
         setLoading(false);
     }
-
-    // const { currentUser } = useContext(AuthContext);
-    // if (currentUser) {
-    //     return <Redirect to="/" />
-    // }
 
     return (
         <React.Fragment>

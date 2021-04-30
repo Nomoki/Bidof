@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect  } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 
@@ -24,16 +24,12 @@ const SignUp = () => {
            setError('');
            setLoading(true);
            await signup(emailRef.current.value, passwordRef.current.value);
-           history.push("/")
+           history.push("/");
         } catch {
             setError('Failed to create an account');
         }
         setLoading(false);
     }
-
-    // if (currentUser) {
-    //     return <Redirect to="/" />
-    // }
     
     return (
         <React.Fragment>
