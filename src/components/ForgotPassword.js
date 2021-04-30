@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from './AuthContext';
 import { Container, Alert } from 'react-bootstrap';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
 
