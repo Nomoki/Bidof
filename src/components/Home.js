@@ -10,8 +10,7 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <div className="container">
-        <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
         <Nav className="mr-auto">
       <Nav.Link href="#home">Home</Nav.Link>
@@ -19,6 +18,8 @@ const Home = () => {
       <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
     </Navbar>
+            <div className="container">
+        
 
                 <h1>HomeTest</h1>
                 <h1>SHOP</h1>
