@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from './Auth';
 import firebaseConfig from '../config';
 
-const Testsignupandin = () => {
+const Dashboard = () => {
     const { currentUser } = useContext(AuthContext);
 
     if (!currentUser) {
@@ -21,4 +21,4 @@ const Testsignupandin = () => {
     )
 }
 
-export default Testsignupandin;
+export default Dashboard;

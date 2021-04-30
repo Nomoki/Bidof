@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Hometest from './components/Hometest';
-import Testsignupandin from './components/Testsignupandin';
+import Home from './components/Home';
+import Dashboard from './components/Dashboard';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import { AuthProvider } from './components/Auth';
@@ -12,8 +12,8 @@ class App extends Component {
       <AuthProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Hometest}/>
-            <Route exact path="/Testsignupandin" component={Testsignupandin}/>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/Dashboard" component={Dashboard}/>
             <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/SignUp" component={SignUp}/>
           </Switch>

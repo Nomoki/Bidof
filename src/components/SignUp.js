@@ -21,7 +21,7 @@ const SignUp = () => {
     }
 
     if (currentUser) {
-        return <Redirect to="/Testsignupandin" />
+        return <Redirect to="/" />
     }
     
     return (
