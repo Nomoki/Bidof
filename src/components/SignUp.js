@@ -1,44 +1,60 @@
-import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
-import firebaseConfig from '../config';
+import React, { useState, useRef } from 'react';
+import { Container, Alert } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from './AuthContext';
+
 
 const SignUp = () => {
-    const [currentUser, setCurrentUser] = useState(null);
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
+    const { signup } = useAuth();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
-        const { email, password } = e.target.elements;
+
+        if(passwordRef.current.value !== passwordConfirmRef.current.value){
+            return setError('Passwords do not match');
+        }
         
         try{
-
-            firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);
-            setCurrentUser(true);
-
-        } catch(error) {
-            alert(error);
+           setError('');
+           setLoading(true);
+           await signup(emailRef.current.value, passwordRef.current.value);
+           history.push("/")
+        } catch {
+            setError('Failed to create an account');
         }
+        setLoading(false);
     }
 
-    if (currentUser) {
-        return <Redirect to="/" />
-    }
+    // if (currentUser) {
+    //     return <Redirect to="/" />
+    // }
     
     return (
         <React.Fragment>
             <Container className="mt-5">
+            {error && <Alert variant="danger">{error}</Alert>}
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Email address</label>
-                    <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                    <input type="email" name="email" ref={emailRef} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
-                    <label for="exampleInputPassword1" className="form-label">Password</label>
-                    <input type="password" name="password" className="form-control" id="exampleInputPassword1"/>
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <input type="password" name="password"  ref={passwordRef} className="form-control" id="exampleInputPassword" required/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password Confirmation</label>
+                    <input type="password" name="passwordconfirm"  ref={passwordConfirmRef} className="form-control" id="exampleInputPasswordcon" required/>
+                </div>
+                <button type="submit" disabled={loading} className="btn btn-primary">Submit</button>
             </form>
             </Container>
         </React.Fragment>

@@ -1,21 +1,38 @@
-import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
-import { AuthContext } from './Auth';
-import firebaseConfig from '../config';
+import React, { useState } from 'react';
+import { useAuth } from './AuthContext';
+import { Alert } from 'react-bootstrap';
+import { Redirect, useHistory } from 'react-router-dom';
+
 
 const Dashboard = () => {
-    const { currentUser } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
+    const { currentUser, logout } = useAuth();
+    const history = useHistory();
+
+    async function handleLogout(){
+        setError('');
+
+        try{
+            await logout();
+            history.push("/");
+        }
+        catch {
+            setError('Failed to log out')
+        }
+    }
 
     if (!currentUser) {
-        return <Redirect to="/LogIn"/>
+        return <Redirect to="/" />
     }
 
     return (
         <div>
             <div className="container mt-5">
                 <h1>Welcome</h1>
-                <p>This is teststuff if you can see this you're logged in</p>
-                <button onClick={() => firebaseConfig.auth().signOut()} class="btn btn-danger">Sign Out</button>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <p>This is your email : </p>{currentUser.email} <br/>
+                <button onClick={handleLogout} className="btn btn-danger">Sign Out</button>
             </div>
         </div>
     )

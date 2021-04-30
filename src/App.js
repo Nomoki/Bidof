@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
-import { AuthProvider } from './components/Auth';
+import { AuthProvider } from './components/AuthContext';
 
 class App extends Component {
   render () {

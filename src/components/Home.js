@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from './Auth';
+import { useAuth } from './AuthContext';
 
 const Home = () => {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useAuth();
 
     return (
         <React.Fragment>
