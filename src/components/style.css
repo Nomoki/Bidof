@@ -22,3 +22,13 @@
     left: 5vw;
 
 }
+.btncat{
+    width: 10%;
+    position: absolute;
+    top: 102%;
+    left: 5%;
+}
+.btnbox{
+    margin: 2%;
+    width: 8vw;
+}

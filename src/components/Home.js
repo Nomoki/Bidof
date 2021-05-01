@@ -45,6 +45,27 @@ const Home = () => {
             </Carousel>
             <h3 className="disco">DISCOVER</h3>
             <h3 className="cat">CATAGORY</h3>
+            <div className="btncat">
+                <Button variant="secondary" size="lg" className="btnbox">
+                    TOYS
+                </Button>
+                <Button variant="secondary" size="lg" className="btnbox">
+                    Electronic
+                </Button>
+                <Button variant="secondary" size="lg" className="btnbox">
+                    Food & Beverage
+                </Button>
+                <Button variant="secondary" size="lg" className="btnbox">
+                    Fashion
+                </Button>
+                <Button variant="secondary" size="lg" className="btnbox">
+                    Automotive
+                </Button>
+                <Button variant="secondary" size="lg" className="btnbox">
+                    BOOKS
+                </Button>
+
+            </div>
    
             
                 {currentUser ? (
