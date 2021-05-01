@@ -1,11 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Route } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
 import logo from './bidoflogo.png';
-import './style.css'
+import './style.css';
+
+const toy = () => (
+    <div>
+        <h2>TEST toys</h2>
+    </div>
+)
+
+const elec = () => (
+    <div>
+        <h2>TEST elec</h2>
+    </div>
+)
 
 const Home = () => {
     const { currentUser } = useAuth();
@@ -46,7 +58,7 @@ const Home = () => {
             <h3 className="disco">DISCOVER</h3>
             <h3 className="cat">CATAGORY</h3>
             <div className="btncat">
-                <Button variant="secondary" size="lg" className="btnbox">
+                <Button variant="secondary" size="lg" className="btnbox" onClick={toy}>
                     TOYS
                 </Button>
                 <Button variant="secondary" size="lg" className="btnbox">
@@ -66,6 +78,8 @@ const Home = () => {
                 </Button>
 
             </div>
+              
+                <Route path="/toy"><toy/></Route>
    
             
                 {currentUser ? (
