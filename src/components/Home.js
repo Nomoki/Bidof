@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link,Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
@@ -56,7 +56,6 @@ const Home = () => {
 
     }
     
-
     return (
         <React.Fragment>
             <Navbar bg="light" variant="light">
@@ -123,20 +122,16 @@ const Home = () => {
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </>
                 )
-                
-                
             }
-              
-                <Route path="/"></Route>
-   
-            
-                {currentUser ? (
+        
+            {currentUser ? (
                     <p>You are logged in - <Link to="/Dashboard">View teststuff</Link></p>
                 ) : (
                     <p>
                         
                     </p>
-                )}
+                )
+            }
         </React.Fragment>
     )
 }
