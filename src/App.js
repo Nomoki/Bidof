@@ -7,6 +7,8 @@ import SignUp from './components/SignUp';
 import { AuthProvider } from './components/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/ForgotPassword';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   render () {

@@ -1,0 +1,37 @@
+body{
+    background-color: #f8f9fa;
+}
+.logo{
+    width: 10%;
+}
+.topbtn{
+    position: relative;
+    left: 50%;
+}
+.cos{
+    width: 50vw;
+    position: absolute;
+    left: 30%;
+    top: 20%;
+}
+.disco{
+    position: absolute;
+    left: 50vw;
+    top: 40vw;
+}
+.cat{
+    position: absolute;
+    top:95%;
+    left: 5vw;
+
+}
+.btncat{
+    width: 10%;
+    position: absolute;
+    top: 102%;
+    left: 5%;
+}
+.btnbox{
+    margin: 2%;
+    width: 8vw;
+}
