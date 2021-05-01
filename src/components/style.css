@@ -5,3 +5,20 @@
     position: relative;
     left: 50%;
 }
+.cos{
+    width: 50vw;
+    position: absolute;
+    left: 30%;
+    top: 20%;
+}
+.disco{
+    position: absolute;
+    left: 50vw;
+    top: 40vw;
+}
+.cat{
+    position: absolute;
+    top:95%;
+    left: 5vw;
+
+}

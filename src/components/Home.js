@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button,Navbar,Nav,ButtonGroup} from 'react-bootstrap';
+import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import './style.css'
 
@@ -25,6 +25,26 @@ const Home = () => {
                     <Button variant="secondary">BID</Button>
                     <Button variant="secondary">OFFER</Button>
                 </ButtonGroup>
+
+            <Carousel className="cos">
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src="https://picsum.photos/800/400"
+                        alt="First slide"
+                    />
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src="https://picsum.photos/800/400"
+                        alt="Second slide"
+                    />
+
+                </Carousel.Item>
+            </Carousel>
+            <h3 className="disco">DISCOVER</h3>
+            <h3 className="cat">CATAGORY</h3>
    
             
                 {currentUser ? (
