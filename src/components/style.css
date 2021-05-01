@@ -35,3 +35,25 @@ body{
     margin: 2%;
     width: 8vw;
 }
+.btncat1{
+    width: 12%;
+    position: absolute;
+    top: 102%;
+    left: 5%;
+    text-align: center;
+    background-color: #E6E6E6;
+    border-radius: 15px;
+
+}
+.btnboxcat1{
+    margin: 3%;
+    width: 8vw;
+
+}
+.fontcat{
+    font-size: 1rem;
+    color: white;
+}
+.fontcat:hover{
+    color: white;
+}

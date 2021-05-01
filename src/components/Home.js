@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import React,{useState} from 'react';
+import { BrowserRouter,Link,Route } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
-
 
 
 const Home = () => {
