@@ -114,14 +114,14 @@ const Home = () => {
                 </Button>
                 </div>) :
                 (
-                <div className="btncat">
+                <>
                 <Toy catChange={catChange} setCatChange={setCatChange}/>
                 <Elect catChange2={catChange2} setCatChange2={setCatChange2}/>
                 <Food catChange3={catChange3} setCatChange3={setCatChange3}/>
                 <Fasions catChange4={catChange4} setCatChange4={setCatChange4}/>
                 <Automotive catChange5={catChange5} setCatChange5={setCatChange5}/>
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
-                </div>
+                </>
                 )
                 
                 
