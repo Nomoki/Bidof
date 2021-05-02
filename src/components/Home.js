@@ -89,7 +89,7 @@ const Home = () => {
                 </Carousel.Item>
             </Carousel>
             <h3 className="disco">DISCOVER</h3>
-            <h3 className="cat">CATAGORY</h3>
+            <h3 className="cat">Category</h3>
             {(!catChange && !catChange2 && !catChange3 && !catChange4 && !catChange5 && !catChange6) ? (
                 <div className="btncat">
                 <Button variant="secondary" size="lg" className="btnboxh" onClick={catToy}>

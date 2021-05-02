@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Prompt:wght@500&display=swap');
+body{
+    font-family: 'Kanit', sans-serif;
+}
 .bg-light {
     background-color: white !important;
 }
@@ -41,6 +45,9 @@
     background-color: #F8F8F8;
     border-color: #707070;
     border-radius: 15px;
+}
+.btnboxh:hover{
+    background-color: lightgray;
 }
 .btncat1{
     width: 12%;
