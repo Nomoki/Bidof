@@ -1,15 +1,29 @@
-import React,{useState, useEffect} from 'react';
-import { BrowserRouter,Link,Route } from 'react-router-dom';
+import React,{ useState, useEffect, useHistory } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
+import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert } from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 
 
-const Home = (e) => {
-    const { currentUser } = useAuth();
+const Home = () => {
+    const { currentUser, logout } = useAuth();
+    const [error, setError] = useState('');
+    const history = useHistory();
+
+    async function handleLogout(){
+        setError('');
+
+        try{
+            await logout();
+            history.push("/");
+        }
+        catch {
+            setError('Failed to log out')
+        }
+    };
 
     const [catChange, setCatChange] = useState(false);
     const [catChange2, setCatChange2] = useState(false);
@@ -118,11 +132,17 @@ const Home = (e) => {
                         <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                     </Nav.Link>
                     <Nav.Link href="#features">
-                        <Link to="/SignUp" className="btn btn-success">Sign Up</Link></Nav.Link>
+                        <Link to="/SignUp" className="btn btn-success">Sign Up</Link>
+                    </Nav.Link>
                     </React.Fragment>
-                      ) : 
-                    null
-                    }
+                      ) : (
+                    <React.Fragment>
+                        <Nav.Link href="#features1">
+                            <Link to="/" className="btn btn-danger" onClick={handleLogout}>Sign Up</Link>
+                            {error && <Alert variant="danger">{error}</Alert>}
+                        </Nav.Link>
+                    </React.Fragment>
+                    )}
                 </Nav>             
             </Navbar>
                 <ButtonGroup aria-label="Basic example" className="topbtn">
