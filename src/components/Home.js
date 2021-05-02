@@ -1,5 +1,5 @@
-import React,{ useState, useEffect, useHistory } from 'react';
-import { Link } from 'react-router-dom';
+import React,{ useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert } from 'react-bootstrap';
@@ -9,21 +9,6 @@ import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 
 
 const Home = () => {
-    const { currentUser, logout } = useAuth();
-    const [error, setError] = useState('');
-    const history = useHistory();
-
-    async function handleLogout(){
-        setError('');
-
-        try{
-            await logout();
-            history.push("/");
-        }
-        catch {
-            setError('Failed to log out')
-        }
-    };
 
     const [catChange, setCatChange] = useState(false);
     const [catChange2, setCatChange2] = useState(false);
@@ -119,14 +104,28 @@ const Home = () => {
         localStorage.setItem('catHold6', JSON.stringify(catChange6));
     }, [catChange6])
 
+    const { currentUser, logout } = useAuth();
+    const [error, setError] = useState('');
+    const history = useHistory();
 
+    async function handleLogout(){
+        setError('');
+
+        try{
+            await logout();
+            history.push("/");
+        }
+        catch {
+            setError('Failed to log out')
+        }
+    }
     
     return (
         <React.Fragment>
             <Navbar bg="light" variant="light">
                 <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="logo" /></Navbar.Brand>
                 <Nav className="mr-auto">
-                    { currentUser ? (
+                    { !currentUser ? (
                     <React.Fragment>
                     <Nav.Link href="#home">
                         <Link to="/LogIn" className="btn btn-primary">Log In</Link>
