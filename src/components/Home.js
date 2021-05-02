@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { BrowserRouter,Link,Route } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,38 +22,90 @@ const Home = () => {
     const catToy = (e) => {
         e.preventDefault();
         setCatChange(!catChange);
-
     }
+    useEffect(() => {
+        const stateHold = JSON.parse(localStorage.getItem('catHold'));
+        setCatChange(stateHold);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold', JSON.stringify(catChange));
+    }, [catChange])
+
+   
     
     const catElec = (e) => {
         e.preventDefault();
         setCatChange2(!catChange2);
-
     }
+    useEffect(() => {
+        const stateHold2 = JSON.parse(localStorage.getItem('catHold2'));
+        setCatChange2(stateHold2);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold2', JSON.stringify(catChange2));
+    }, [catChange2])
+
+
 
     const catFood = (e) => {
         e.preventDefault();
         setCatChange3(!catChange3);
 
     }
+    useEffect(() => {
+        const stateHold3 = JSON.parse(localStorage.getItem('catHold3'));
+        setCatChange3(stateHold3);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold3', JSON.stringify(catChange3));
+    }, [catChange3])
+
+
 
     const catFasion = (e) => {
         e.preventDefault();
         setCatChange4(!catChange4);
 
     }
+    useEffect(() => {
+        const stateHold4 = JSON.parse(localStorage.getItem('catHold4'));
+        setCatChange4(stateHold4);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold4', JSON.stringify(catChange4));
+    }, [catChange4])
+
+
 
     const catAutomotive = (e) => {
         e.preventDefault();
         setCatChange5(!catChange5);
 
     }
+    useEffect(() => {
+        const stateHold5 = JSON.parse(localStorage.getItem('catHold5'));
+        setCatChange5(stateHold5);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold5', JSON.stringify(catChange5));
+    }, [catChange5])
+
+
 
     const catBooks = (e) => {
         e.preventDefault();
         setCatChange6(!catChange6);
 
     }
+    useEffect(() => {
+        const stateHold6 = JSON.parse(localStorage.getItem('catHold6'));
+        setCatChange6(stateHold6);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold6', JSON.stringify(catChange6));
+    }, [catChange6])
+
+
     
     return (
         <React.Fragment>
