@@ -136,7 +136,7 @@ const Home = () => {
                       ) : (
                     <React.Fragment>
                         <Nav.Link href="#features1">
-                            <Link to="/" className="btn btn-danger" onClick={handleLogout}>Sign Out</Link>
+                            <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
                             {error && <Alert variant="danger">{error}</Alert>}
                         </Nav.Link>
                     </React.Fragment>
