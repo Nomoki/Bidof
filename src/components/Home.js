@@ -108,9 +108,9 @@ const Home = () => {
     const [error, setError] = useState('');
     const history = useHistory();
 
-    async function handleLogout(){
+    async function handleLogout(e){
+        e.preventDefault();
         setError('');
-
         try{
             await logout();
             history.push("/");
@@ -137,7 +137,7 @@ const Home = () => {
                       ) : (
                     <React.Fragment>
                         <Nav.Link href="#features1">
-                            <Link to="/" className="btn btn-danger" onClick={handleLogout}>Sign Up</Link>
+                            <Link to="/" className="btn btn-danger" onClick={handleLogout}>Sign Out</Link>
                             {error && <Alert variant="danger">{error}</Alert>}
                         </Nav.Link>
                     </React.Fragment>
