@@ -92,23 +92,23 @@ const Home = () => {
             <h3 className="cat">CATAGORY</h3>
             {(!catChange && !catChange2 && !catChange3 && !catChange4 && !catChange5 && !catChange6) ? (
                 <div className="btncat">
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catToy}>
-                    TOYS
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catToy}>
+                    <h1 className="fontcath">TOYS</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catElec}>
-                    Electronic
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catElec}>
+                <h1 className="fontcath">Electronic</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catFood}>
-                    Food & Beverage
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFood}>
+                <h1 className="fontcath">Food & Beverage</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catFasion}>
-                    Fashion
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFasion}>
+                <h1 className="fontcath">Fashion</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catAutomotive}>
-                    Automotive
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catAutomotive}>
+                <h1 className="fontcath">Automotive</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catBooks}>
-                    BOOKS
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catBooks}>
+                <h1 className="fontcath">BOOKS</h1>
                 </Button>
                 </div>
                 ) : (

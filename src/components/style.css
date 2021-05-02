@@ -1,6 +1,4 @@
-body{
-    background-color: #f8f9fa;
-}
+
 .logo{
     width: 10%;
 }
@@ -35,13 +33,20 @@ body{
     margin: 2%;
     width: 8vw;
 }
+.btnboxh{
+    margin: 2%;
+    width: 8vw;
+    background-color: #F8F8F8;
+    border-color: #707070;
+    border-radius: 15px;
+}
 .btncat1{
     width: 12%;
     position: absolute;
     top: 102%;
     left: 5%;
     text-align: center;
-    background-color: #E6E6E6;
+    background-color: #bdbdbd;
     border-radius: 15px;
 
 }
@@ -56,4 +61,9 @@ body{
 }
 .fontcat:hover{
     color: white;
+}
+
+.fontcath{
+    color: #707070;
+    font-size: 1rem;
 }
