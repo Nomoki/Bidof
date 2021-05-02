@@ -6,6 +6,7 @@ import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert } from 'react-bootstr
 import logo from './bidoflogo.png';
 import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
+import { auth, db } from '../config';
 
 
 const Home = () => {
@@ -104,7 +105,7 @@ const Home = () => {
         localStorage.setItem('catHold6', JSON.stringify(catChange6));
     }, [catChange6])
 
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, } = useAuth();
     const [error, setError] = useState('');
     const history = useHistory();
 
@@ -118,6 +119,23 @@ const Home = () => {
             setError('Failed to log out')
         }
     }
+
+    const [user, setUser] = useState();
+
+    async function getUser(){
+        try {
+            const documentSnapshot = await db.collection('users').doc(currentUser.uid).get();
+            const userData = documentSnapshot.data();
+            setUser(userData);
+          } catch {
+            setError('Cant get data');
+          }
+    };
+    useEffect(() => {
+        getUser();
+    }, []);
+    
+    
     
     return (
         <React.Fragment>
@@ -138,6 +156,7 @@ const Home = () => {
                         <Nav.Link href="#features1">
                             <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
                             {error && <Alert variant="danger">{error}</Alert>}
+                            <h1>{user && user?.name}</h1>
                         </Nav.Link>
                     </React.Fragment>
                     )}
