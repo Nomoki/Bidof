@@ -108,8 +108,7 @@ const Home = () => {
     const [error, setError] = useState('');
     const history = useHistory();
 
-    async function handleLogout(e){
-        e.preventDefault();
+    async function handleLogout(){
         setError('');
         try{
             await logout();
