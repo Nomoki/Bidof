@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Link, Route } from 'react-router-dom';
+import React,{useState, useEffect} from 'react';
+import { BrowserRouter,Link,Route } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Navbar,Nav,ButtonGroup,Carousel} from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
-
 
 
 const Home = () => {
@@ -23,38 +22,90 @@ const Home = () => {
     const catToy = (e) => {
         e.preventDefault();
         setCatChange(!catChange);
-
     }
+    useEffect(() => {
+        const stateHold = JSON.parse(localStorage.getItem('catHold'));
+        setCatChange(stateHold);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold', JSON.stringify(catChange));
+    }, [catChange])
+
+   
     
     const catElec = (e) => {
         e.preventDefault();
         setCatChange2(!catChange2);
-
     }
+    useEffect(() => {
+        const stateHold2 = JSON.parse(localStorage.getItem('catHold2'));
+        setCatChange2(stateHold2);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold2', JSON.stringify(catChange2));
+    }, [catChange2])
+
+
 
     const catFood = (e) => {
         e.preventDefault();
         setCatChange3(!catChange3);
 
     }
+    useEffect(() => {
+        const stateHold3 = JSON.parse(localStorage.getItem('catHold3'));
+        setCatChange3(stateHold3);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold3', JSON.stringify(catChange3));
+    }, [catChange3])
+
+
 
     const catFasion = (e) => {
         e.preventDefault();
         setCatChange4(!catChange4);
 
     }
+    useEffect(() => {
+        const stateHold4 = JSON.parse(localStorage.getItem('catHold4'));
+        setCatChange4(stateHold4);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold4', JSON.stringify(catChange4));
+    }, [catChange4])
+
+
 
     const catAutomotive = (e) => {
         e.preventDefault();
         setCatChange5(!catChange5);
 
     }
+    useEffect(() => {
+        const stateHold5 = JSON.parse(localStorage.getItem('catHold5'));
+        setCatChange5(stateHold5);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold5', JSON.stringify(catChange5));
+    }, [catChange5])
+
+
 
     const catBooks = (e) => {
         e.preventDefault();
         setCatChange6(!catChange6);
 
     }
+    useEffect(() => {
+        const stateHold6 = JSON.parse(localStorage.getItem('catHold6'));
+        setCatChange6(stateHold6);
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('catHold6', JSON.stringify(catChange6));
+    }, [catChange6])
+
+
     
     return (
         <React.Fragment>
@@ -90,29 +141,29 @@ const Home = () => {
                 </Carousel.Item>
             </Carousel>
             <h3 className="disco">DISCOVER</h3>
-            <h3 className="cat">CATAGORY</h3>
-            {(!catChange && !catChange2 && !catChange3 && !catChange4 && !catChange5 && !catChange6) ? 
-                (<div className="btncat">
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catToy}>
-                    TOYS
+            <h3 className="cat">Category</h3>
+            {(!catChange && !catChange2 && !catChange3 && !catChange4 && !catChange5 && !catChange6) ? (
+                <div className="btncat">
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catToy}>
+                    <h1 className="fontcath">TOYS</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catElec}>
-                    Electronic
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catElec}>
+                <h1 className="fontcath">Electronic</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catFood}>
-                    Food & Beverage
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFood}>
+                <h1 className="fontcath">Food & Beverage</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catFasion}>
-                    Fashion
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFasion}>
+                <h1 className="fontcath">Fashion</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catAutomotive}>
-                    Automotive
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catAutomotive}>
+                <h1 className="fontcath">Automotive</h1>
                 </Button>
-                <Button variant="secondary" size="lg" className="btnbox" onClick={catBooks}>
-                    BOOKS
+                <Button variant="secondary" size="lg" className="btnboxh" onClick={catBooks}>
+                <h1 className="fontcath">BOOKS</h1>
                 </Button>
-                </div>) :
-                (
+                </div>
+                ) : (
                 <>
                 <Toy catChange={catChange} setCatChange={setCatChange}/>
                 <Elect catChange2={catChange2} setCatChange2={setCatChange2}/>
@@ -121,8 +172,7 @@ const Home = () => {
                 <Automotive catChange5={catChange5} setCatChange5={setCatChange5}/>
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </>
-                )
-            }
+                )}
         
             {currentUser ? (
                     <p>You are logged in - <Link to="/Dashboard">View teststuff</Link></p>

@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Prompt:wght@500&display=swap');
 body{
-    background-color: #f8f9fa;
+    font-family: 'Kanit', sans-serif;
+}
+.bg-light {
+    background-color: white !important;
 }
 .logo{
     width: 10%;
@@ -22,7 +26,8 @@ body{
 .cat{
     position: absolute;
     top:95%;
-    left: 5vw;
+    left: 6vw;
+    font-size: 130%;
 
 }
 .btncat{
@@ -34,4 +39,41 @@ body{
 .btnbox{
     margin: 2%;
     width: 8vw;
+}
+.btnboxh{
+    margin: 2%;
+    width: 8vw;
+    background-color: #F8F8F8;
+    border-color: #707070;
+    border-radius: 15px;
+}
+.btnboxh:hover{
+    background-color: lightgray;
+}
+.btncat1{
+    width: 12%;
+    position: absolute;
+    top: 102%;
+    left: 5%;
+    text-align: center;
+    background-color: #E6E6E6;
+    border-radius: 15px;
+
+}
+.btnboxcat1{
+    margin: 3%;
+    width: 8vw;
+    background-color: white;
+}
+.btnboxcat1:hover{
+    background-color: lightgray;
+}
+.fontcat{
+    font-size: 1vw;
+    color: #707070;
+}
+
+.fontcath{
+    color: #707070;
+    font-size: 1vw;
 }
