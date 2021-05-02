@@ -197,7 +197,8 @@ const Home = () => {
                 <Automotive catChange5={catChange5} setCatChange5={setCatChange5}/>
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </React.Fragment>
-                )}
+            )}
+
         </React.Fragment>
     )
 }
