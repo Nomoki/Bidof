@@ -64,14 +64,13 @@ body{
     margin: 3%;
     width: 8vw;
     background-color: white;
-
+}
+.btnboxcat1:hover{
+    background-color: lightgray;
 }
 .fontcat{
     font-size: 1vw;
     color: #707070;
-}
-.fontcat:hover{
-    color: white;
 }
 
 .fontcath{
