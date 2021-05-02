@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Container, Alert } from 'react-bootstrap';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import { db } from '../config';
 
 
 const SignUp = () => {
@@ -23,7 +24,15 @@ const SignUp = () => {
         try{
            setError('');
            setLoading(true);
-           await signup(emailRef.current.value, passwordRef.current.value);
+           await signup(emailRef.current.value, passwordRef.current.value)
+           .then(function(userCredential) {
+            db.collection('users')
+              .doc(`${userCredential.user.uid}`)
+              .set({
+                email: emailRef.current.value,
+                uid: userCredential.user.uid
+              })
+            })
            history.push("/");
         } catch {
             setError('Failed to create an account');
