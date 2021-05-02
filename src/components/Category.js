@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 export const Toy = ({ catChange, setCatChange }) => {
 
     return (
-        <>
+        <React.Fragment>
             {catChange ? (
                 <div className="btncat1">
                     <h3>TOYS</h3>
@@ -30,13 +30,13 @@ export const Toy = ({ catChange, setCatChange }) => {
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }
 
 export const Elect = ({ catChange2, setCatChange2 }) => {
     return (
-        <>
+        <React.Fragment>
             {catChange2 ? (
                 <div className="btncat1">
                     <h3>ELECTRONIC</h3>
@@ -57,17 +57,17 @@ export const Elect = ({ catChange2, setCatChange2 }) => {
                     </Button>
                     <Button variant="Executive toysecondary" size="lg" className="btnbox" onClick={() => setCatChange2(!catChange2)}>
                         back
-    </Button>
+                    </Button>
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }
 
 export const Food = ({ catChange3, setCatChange3 }) => {
     return (
-        <>
+        <React.Fragment>
             {catChange3 ? (
                 <div className="btncat1">
                     <h3>Food & Beverage</h3>
@@ -88,17 +88,17 @@ export const Food = ({ catChange3, setCatChange3 }) => {
                     </Button>
                     <Button variant="Executive toysecondary" size="lg" className="btnbox" onClick={() => setCatChange3(!catChange3)}>
                         back
-    </Button>
+                    </Button>
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }
 
 export const Fasions = ({ catChange4, setCatChange4 }) => {
     return (
-        <>
+        <React.Fragment>
             {catChange4 ? (
                 <div className="btncat1">
                     <h3>Fashion</h3>
@@ -136,17 +136,17 @@ export const Fasions = ({ catChange4, setCatChange4 }) => {
                     </Button>
                     <Button variant="Executive toysecondary" size="lg" className="btnbox" onClick={() => setCatChange4(!catChange4)}>
                         back
-    </Button>
+                    </Button>
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }
 
 export const Automotive = ({ catChange5, setCatChange5 }) => {
     return (
-        <>
+        <React.Fragment>
             {catChange5 ? (
                 <div className="btncat1">
                     <h3>Automotive</h3>
@@ -167,17 +167,17 @@ export const Automotive = ({ catChange5, setCatChange5 }) => {
                     </Button>   
                     <Button variant="Executive toysecondary" size="lg" className="btnbox" onClick={() => setCatChange5(!catChange5)}>
                         back
-    </Button>
+                    </Button>
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }
 
 export const Books = ({ catChange6, setCatChange6 }) => {
     return (
-        <>
+        <React.Fragment>
             {catChange6 ? (
                 <div className="btncat1">
                     <h3>BOOKS</h3>
@@ -198,10 +198,10 @@ export const Books = ({ catChange6, setCatChange6 }) => {
                     </Button>   
                     <Button variant="Executive toysecondary" size="lg" className="btnbox" onClick={() => setCatChange6(!catChange6)}>
                         back
-    </Button>
+                    </Button>
                 </div>
             ) :
                 null}
-        </>
+        </React.Fragment>
     )
 }

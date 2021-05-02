@@ -8,7 +8,7 @@ import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 
 
-const Home = () => {
+const Home = (e) => {
     const { currentUser } = useAuth();
 
     const [catChange, setCatChange] = useState(false);
@@ -112,12 +112,18 @@ const Home = () => {
             <Navbar bg="light" variant="light">
                 <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="logo" /></Navbar.Brand>
                 <Nav className="mr-auto">
+                    { currentUser ? (
+                    <React.Fragment>
                     <Nav.Link href="#home">
                         <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                     </Nav.Link>
                     <Nav.Link href="#features">
                         <Link to="/SignUp" className="btn btn-success">Sign Up</Link></Nav.Link>
-                    </Nav>
+                    </React.Fragment>
+                      ) : 
+                    null
+                    }
+                </Nav>             
             </Navbar>
                 <ButtonGroup aria-label="Basic example" className="topbtn">
                     <Button variant="secondary">BID</Button>
@@ -165,24 +171,15 @@ const Home = () => {
                 </Button>
                 </div>
                 ) : (
-                <>
+                <React.Fragment>
                 <Toy catChange={catChange} setCatChange={setCatChange}/>
                 <Elect catChange2={catChange2} setCatChange2={setCatChange2}/>
                 <Food catChange3={catChange3} setCatChange3={setCatChange3}/>
                 <Fasions catChange4={catChange4} setCatChange4={setCatChange4}/>
                 <Automotive catChange5={catChange5} setCatChange5={setCatChange5}/>
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
-                </>
+                </React.Fragment>
                 )}
-        
-            {currentUser ? (
-                    <p>You are logged in - <Link to="/Dashboard">View teststuff</Link></p>
-                ) : (
-                    <p>
-                        
-                    </p>
-                )
-            }
         </React.Fragment>
     )
 }
