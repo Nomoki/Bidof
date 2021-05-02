@@ -1,4 +1,6 @@
-
+.bg-light {
+    background-color: white !important;
+}
 .logo{
     width: 10%;
 }
