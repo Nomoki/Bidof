@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,7 +7,7 @@ import logo from './bidoflogo.png';
 import plus from './plus.png';
 import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
-import { auth, db } from '../config';
+import firebaseConfig, { auth, db } from '../config';
 
 
 const CreateOfferPost = () => {
@@ -41,6 +41,62 @@ const CreateOfferPost = () => {
         getUser();
     }, []);
 
+    const [prodUser, setProdUser] = useState();
+    const [editState, setEditState] = useState(false);
+    const prodNameRef = useRef();
+    const prodPriceRef = useRef();
+    const prodDescRef = useRef();
+
+    const proState = (e) =>{
+        e.preventDefault();
+        setEditState(!editState);
+    }
+
+   
+    async function editProduct(e){
+        e.preventDefault();
+        try {
+            await db.collection('users').doc(currentUser.uid).get().then((snap) => {
+                    const profileRef = snap.ref.collection('offerprod').doc();
+                    profileRef.set({
+                        produtpic: fileUrl,
+                        productname: prodNameRef.current.value,
+                        productprice: prodPriceRef.current.value,
+                        productdesc: prodDescRef.current.value
+                    }).catch(e => console.error(e));
+                });
+            setEditState(!editState);
+            history.push('/');
+            
+        } catch {
+            setError('Cant get edit2');
+        }
+    }
+
+    // async function setProduct(){
+    //     try {
+    //         const edited = await db.collection('users').doc(currentUser.uid).collection('bidprodlist').get()
+    //         const proData = edited.data();
+    //         setProdUser(proData);
+    //     } catch {
+    //         setError('Cant get edit');
+    //     }
+    // } 
+    // useEffect(() => {
+    //     setProduct();
+    // }, []);
+
+    const [fileUrl, setFileUrl] = useState(null)
+
+    const onFileChange = async (e) => {
+        const file = e.target.files[0]
+        const storageRef = firebaseConfig.storage().ref('productpic');
+        const fileRef = storageRef.child(file.name);
+        await fileRef.put(file);
+        setFileUrl(await fileRef.getDownloadURL())
+
+    }
+
     return (
         <div>
             <>
@@ -49,16 +105,16 @@ const CreateOfferPost = () => {
                     <Nav className="mr-auto">
                         {!currentUser ? (
                             <React.Fragment>
-                                <Nav.Link>
+                                <Nav.Link >
                                     <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                                 </Nav.Link>
-                                <Nav.Link>
+                                <Nav.Link >
                                     <Link to="/SignUp" className="btn btn-success">Sign Up</Link>
                                 </Nav.Link>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-                                 <Nav.Link>
+                                <Nav.Link >
                                     <Link to="/Profiles" className="btn btn-info">{user && user.name}</Link>
                                 </Nav.Link>
                                 <Nav.Link >
@@ -69,28 +125,52 @@ const CreateOfferPost = () => {
                         )}
                     </Nav>
                 </Navbar>
-                <img src={plus} className='imgplus'></img>
+                {!editState ? (
+                <>
+                <img  src={plus} className='imgplus'></img>
                 <div className="postbox">
                     <Form.Group >
-                        <Form.Control className="proname" size="lg" type="text" placeholder="Product name" />
+                        <Form.Control disabled="disabled" className="proname" size="lg" type="text" placeholder="Product name" />
                     </Form.Group>
 
                     <div className="pricebox">
                         <Form.Group>
-                            <Form.Control size="lg" type="text" placeholder="Price" />
+                            <Form.Control disabled="disabled" size="lg" type="text" placeholder="Price" />
                         </Form.Group>
                     </div>
 
                     <div className="desbox">
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Control as="textarea" rows={3} placeholder="Description"/>
+                            <Form.Control disabled="disabled" as="textarea" rows={3} placeholder="Description"/>
                         </Form.Group>
-                        <Button variant="secondary" className="editpost">EDIT</Button>{' '}
+                        <Button onClick={proState} variant="secondary" className="editpost">EDIT</Button>
                     </div>
-                    
-
                 </div>
+                </>) : (
+                <>
+                <form onSubmit={editProduct}>
+                <input type="file" onChange={onFileChange}/>
+                <div className="postbox">
+                    <Form.Group >
+                        <Form.Control ref={prodNameRef} className="proname" size="lg" type="text" placeholder="Product name" />
+                    </Form.Group>
 
+                    <div className="pricebox">
+                        <Form.Group>
+                            <Form.Control ref={prodPriceRef} size="lg" type="text" placeholder="Price" />
+                        </Form.Group>
+                    </div>
+
+                    <div className="desbox">
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Control ref={prodDescRef} as="textarea" rows={3} placeholder="Description"/>
+                        </Form.Group>
+                        <Button type="submit" variant="secondary" className="editpost">Submit</Button>
+                    </div>
+                </div>
+                </form>
+                </>
+                )}
             </>
         </div>
     )
