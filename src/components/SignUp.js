@@ -9,7 +9,6 @@ const SignUp = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const nameRef = useRef();
     const { signup, currentUser } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -30,7 +29,6 @@ const SignUp = () => {
             db.collection('users')
               .doc(`${userCredential.user.uid}`)
               .set({
-                name: nameRef.current.value,
                 email: emailRef.current.value,
                 uid: userCredential.user.uid
               })
@@ -52,10 +50,6 @@ const SignUp = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
-                    <input type="text" name="text" ref={nameRef} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
-                </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" name="email" ref={emailRef} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
