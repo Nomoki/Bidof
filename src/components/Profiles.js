@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert,Container,Row,Col } from 'react-bootstrap';
+import { Button, Navbar, Nav, Alert,Container,Row,Col } from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import avatar from './avatar.png';
 import './style.css';
-import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
-import { auth, db } from '../config';
+import { db, storage } from '../config';
 
 const Profile = () => {
     const { currentUser, logout, } = useAuth();
@@ -40,6 +39,49 @@ const Profile = () => {
         getUser();
     }, []);
 
+
+    const [proUser, setProUser] = useState();
+    const [editState, setEditState] = useState(false);
+    const descRef = useRef();
+
+    const proState = (e) =>{
+        e.preventDefault();
+        setEditState(!editState);
+    }
+
+   
+    async function editProfile(e){
+        e.preventDefault();
+        try {
+            await db.collection('users').doc(currentUser.uid).get().then((snap) => {
+                    const profileRef = snap.ref.collection('profiles').doc(currentUser.uid);
+                    profileRef.set({
+                        desc: descRef.current.value
+                    }).catch(e => console.error(e));
+                });
+            setEditState(!editState);
+            history.push('/Profiles');
+            
+        } catch {
+            setError('Cant get edit2');
+        }
+    }
+
+    async function setProfile(){
+        try {
+            const edited = await db.collection('users').doc(currentUser.uid).collection('profiles').doc(currentUser.uid).get()
+            const proData = edited.data();
+            setProUser(proData);
+        } catch {
+            setError('Cant get edit');
+        }
+    } 
+    useEffect(() => {
+        setProfile();
+    }, []);
+
+
+
     return (
         <div>
             <React.Fragment>
@@ -65,12 +107,27 @@ const Profile = () => {
                         )}
                     </Nav>
                 </Navbar>
-                <img src={avatar} className='profilepic'></img>
+                <img src={avatar} className='profilepic' alt='pro'></img>
                 <h1 className='proname'>{user && user.name}</h1>
-                <div className="tareaandbtn">
-                <textarea className="protextarea" placeholder="Description"></textarea>
-                <Button variant="secondary" className="btnpro">Edit</Button>{' '}
+
+                {!editState ? (
+                <>
+                <div className="tareaandbtn" >
+                 <p className="protextarea">{proUser && proUser.desc} </p>    
+                <Button type="submit" variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
                 </div>
+                </>
+                ) : (
+                <>
+                <form onSubmit={editProfile}>
+                <div className="tareaandbtn" >
+                <input ref={descRef} className="protextarea" placeholder="Description"></input>
+                <Button type="submit" variant="secondary" className="btnpro">submit</Button>
+                </div>
+                </form>
+                </>
+                )
+                }
                 <div className="bidbox">
                     <h2>MY BID</h2>
                     <Container fluid>
@@ -90,7 +147,7 @@ const Profile = () => {
                             <Col>1 of 5</Col>
                         </Row>
                         <Row>
-                            <Col><Button variant="secondary" className='btnnewbid'>NEW+</Button>{' '}</Col>
+                            <Col><Link to="/CreateBidPosts" variant="secondary" className='btnnewbid'>NEW+</Link></Col>
                         </Row>
                     </Container>
                 </div>
@@ -108,7 +165,7 @@ const Profile = () => {
                             <Col>1 of 3</Col>
                         </Row>
                         <Row>
-                            <Col><Button variant="secondary" className='btnnewoffer'>NEW+</Button>{' '}</Col>
+                            <Col><Link to="/CreateOfferPosts" variant="secondary" className='btnnewoffer'>NEW+</Link></Col>
                         </Row>
                     </Container>
 

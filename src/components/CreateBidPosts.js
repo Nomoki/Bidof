@@ -10,7 +10,7 @@ import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 import { auth, db } from '../config';
 
 
-const CreatePost = () => {
+const CreateBidPost = () => {
     const { currentUser, logout, } = useAuth();
     const [error, setError] = useState('');
     const history = useHistory();
@@ -93,4 +93,4 @@ const CreatePost = () => {
     )
 }
 
-export default CreatePost
+export default CreateBidPost
