@@ -9,7 +9,6 @@ import './style.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 import { auth, db } from '../config';
 
-
 const CreateBidPost = () => {
     const { currentUser, logout, } = useAuth();
     const [error, setError] = useState('');
