@@ -144,3 +144,52 @@ body{
     position: absolute;
     left: 10%;
 }
+.imgplus{
+    border-style: solid;
+    border-color: #707070;
+    width: 50%;
+    position: relative;
+    left: 25%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.imgplus:hover{
+    opacity: 0.5;
+}
+.postbox{
+    width: 50%;
+    height: 43vh;
+    background-color: #E8E8E8;
+    position: relative;
+    left:25%;
+    border-style: solid;
+    border-color: #707070;
+}
+.proname{
+    background-color: transparent;
+    border-color: transparent;
+    text-align: left;
+}
+.pricebox{
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    margin-top: 3%;
+
+}
+.price{
+    color: red;
+}
+.desbox{
+    width: 80%;
+    height: 45%;
+    margin: auto;
+}
+.des{
+    font-size: 1rem;
+}
+.editpost{
+    position: relative;
+    left: 45%;
+    margin-bottom: 5%;
+}
