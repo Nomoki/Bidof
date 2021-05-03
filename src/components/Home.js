@@ -138,6 +138,20 @@ const Home = () => {
         getUser();
     }, []);
     
+    const [prodUser, setProdUser] = useState();
+
+     async function getProduct(){
+        try {
+            const allBid = await db.collection('users').doc().collection('bidprodlist').get();
+            const proData = allBid.data();
+            setProdUser(proData);
+        } catch {
+            setError('Cant get Product');
+        }
+    } 
+    useEffect(() => {
+        getProduct();
+    }, []);
     
     
     return (
@@ -222,6 +236,9 @@ const Home = () => {
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </React.Fragment>
             )}
+            <div>
+
+            </div>
         </React.Fragment>
     )
 }
