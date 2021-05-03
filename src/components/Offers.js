@@ -144,19 +144,22 @@ const Offer = () => {
     return (
         <React.Fragment>
             <Navbar bg="light" variant="light">
-                <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="logo" /></Navbar.Brand>
+                <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" className="logo" /></Link></Navbar.Brand>
                 <Nav className="mr-auto">
                     { !currentUser ? (
                     <React.Fragment>
-                    <Nav.Link href="#home">
+                    <Nav.Link>
                         <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                     </Nav.Link>
-                    <Nav.Link href="#features">
+                    <Nav.Link>
                         <Link to="/SignUp" className="btn btn-success">Sign Up</Link>
                     </Nav.Link>
                     </React.Fragment>
                       ) : (
                     <React.Fragment>
+                        <Nav.Link>
+                            <Link to="/Profiles" className="btn btn-info">{user && user.name}</Link>
+                        </Nav.Link>
                         <Nav.Link href="#features1">
                             <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
                             {error && <Alert variant="danger">{error}</Alert>}
@@ -220,9 +223,6 @@ const Offer = () => {
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </React.Fragment>
             )}
-             {currentUser ? (<h1>{user && user?.name}</h1>)
-            : null
-            }
         </React.Fragment>
     )
 }

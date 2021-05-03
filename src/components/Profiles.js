@@ -6,7 +6,7 @@ import { Button, Navbar, Nav, Alert,Container,Row,Col } from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import avatar from './avatar.png';
 import './style.css';
-import { db, storage } from '../config';
+import firebaseConfig, { db } from '../config';
 
 const Profile = () => {
     const { currentUser, logout, } = useAuth();
@@ -56,7 +56,8 @@ const Profile = () => {
             await db.collection('users').doc(currentUser.uid).get().then((snap) => {
                     const profileRef = snap.ref.collection('profiles').doc(currentUser.uid);
                     profileRef.set({
-                        desc: descRef.current.value
+                        desc: descRef.current.value,
+                        avatars: fileUrl
                     }).catch(e => console.error(e));
                 });
             setEditState(!editState);
@@ -80,17 +81,26 @@ const Profile = () => {
         setProfile();
     }, []);
 
+    const [fileUrl, setFileUrl] = useState(null)
 
+    const onFileChange = async (e) => {
+        const file = e.target.files[0]
+        const storageRef = firebaseConfig.storage().ref('profilepic');
+        const fileRef = storageRef.child(file.name);
+        await fileRef.put(file);
+        setFileUrl(await fileRef.getDownloadURL())
+
+    }
 
     return (
         <div>
             <React.Fragment>
                 <Navbar bg="light" variant="light">
-                    <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="logo" /></Navbar.Brand>
+                    <Navbar.Brand ><Link to="/"><img src={logo} alt="Logo" className="logo" /></Link></Navbar.Brand>
                     <Nav className="mr-auto">
                         {!currentUser ? (
                             <React.Fragment>
-                                <Nav.Link href="#home">
+                                <Nav.Link >
                                     <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                                 </Nav.Link>
                                 <Nav.Link href="#features">
@@ -99,7 +109,7 @@ const Profile = () => {
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-                                <Nav.Link href="#features1">
+                                <Nav.Link>
                                     <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
                                     {error && <Alert variant="danger">{error}</Alert>}
                                 </Nav.Link>
@@ -107,11 +117,14 @@ const Profile = () => {
                         )}
                     </Nav>
                 </Navbar>
-                <img src={avatar} className='profilepic' alt='pro'></img>
-                <h1 className='proname'>{user && user.name}</h1>
+
+                    
+                
 
                 {!editState ? (
                 <>
+                <img src={proUser && proUser.avatars} className='profilepic' alt=''></img>
+                <h1 className='proname'>{user && user.name}</h1>
                 <div className="tareaandbtn" >
                  <p className="protextarea">{proUser && proUser.desc} </p>    
                 <Button type="submit" variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
@@ -120,6 +133,7 @@ const Profile = () => {
                 ) : (
                 <>
                 <form onSubmit={editProfile}>
+                <input type="file" className="protextarea" onChange={onFileChange}/>
                 <div className="tareaandbtn" >
                 <input ref={descRef} className="protextarea" placeholder="Description"></input>
                 <Button type="submit" variant="secondary" className="btnpro">submit</Button>
