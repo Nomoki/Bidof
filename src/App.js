@@ -8,6 +8,9 @@ import { AuthProvider } from './components/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Offer from './components/Offers';
+import Profile from './components/Profiles';
+import CreatePost from './components/CreatePosts';
 
 
 class App extends Component {
@@ -17,6 +20,9 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/Offers" component={Offer}/>
+            <Route exact path="/Profiles" component={Profile}/>
+            <Route exact path="/CreatePosts" component={CreatePost}/>
             <PrivateRoute exact path="/Dashboard" component={Dashboard}/>
             <Route exact path="/SignUp" component={SignUp}/>
             <Route exact path="/LogIn" component={LogIn}/>

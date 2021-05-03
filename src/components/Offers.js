@@ -4,12 +4,12 @@ import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert } from 'react-bootstrap';
 import logo from './bidoflogo.png';
-import './style.css';
+import './style2.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 import { auth, db } from '../config';
 
 
-const Home = () => {
+const Offer = () => {
 
     const [catChange, setCatChange] = useState(false);
     const [catChange2, setCatChange2] = useState(false);
@@ -108,6 +108,7 @@ const Home = () => {
 
 
 
+
     const { currentUser, logout, } = useAuth();
     const [error, setError] = useState('');
     const history = useHistory();
@@ -165,8 +166,8 @@ const Home = () => {
                 </Nav>             
             </Navbar>
                 <ButtonGroup aria-label="Basic example" className="topbtn">
-                    <Link to="/" className="btn btn-primary">BID</Link>
-                    <Link to="/Offers" className="btn btn-success">OFFER</Link>
+                    <Link to="/" className="btn btn-success" >BID</Link>
+                    <Link to="/Offers" className="btn btn-primary">OFFER</Link>
                 </ButtonGroup>
 
             <Carousel className="cos">
@@ -219,11 +220,11 @@ const Home = () => {
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </React.Fragment>
             )}
-            {currentUser ? (<h1>{user && user?.name}</h1>)
+             {currentUser ? (<h1>{user && user?.name}</h1>)
             : null
             }
         </React.Fragment>
     )
 }
 
-export default Home;
+export default Offer;
