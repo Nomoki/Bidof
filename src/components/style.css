@@ -77,3 +77,70 @@ body{
     color: #707070;
     font-size: 1vw;
 }
+.profilepic{
+    width: 20%;
+    border-radius: 50%;
+    position: relative;
+    left: 40%;
+}
+.proname{
+    text-align: center;
+}
+.protextarea{
+    position: relative;
+    left: 35%;
+    width: 30%;
+}
+.btnpro{
+    position:absolute;
+    left: 48%;
+    top: 30%;
+}
+.bidbox{
+    position: absolute;
+    left: 10%;
+    width: 20%;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: #707070;
+    text-align: center;
+    position: absolute;
+    overflow: hidden;
+    /* display: grid;
+    grid-template-columns: 1 1fr; */
+}
+.mybid{
+    position: relative;
+    left: 10%;
+    width: 80%;
+    height: 25%;
+    background-color: #707070;
+    margin: auto;
+    margin-bottom: 5%;
+}
+.btnnewbid{
+    margin-bottom: 5%;
+}
+
+.offerbox{
+    position: absolute;
+    left: 70%;
+    width: 20%;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: #707070;
+    background-color: #F1F1F1;
+    text-align: center;
+    position: absolute;
+    overflow: hidden;
+}
+.btnnewoffer{
+    margin-bottom: 5%;
+
+}
+.tareaandbtn{
+    width: 80%;
+    height: 30%;
+    position: absolute;
+    left: 10%;
+}
