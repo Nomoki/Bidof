@@ -12,6 +12,7 @@ import Profile from './components/Profiles';
 import CreateBidPost from './components/CreateBidPosts';
 import CreateOfferPost from './components/CreateOfferPosts';
 import ViewProduct from './components/ViewProducts';
+import Chat from './components/Chats';
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
             <Route exact path="/SignUp" component={SignUp}/>
             <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/Forgot-Password" component={ForgotPassword}/>
+            <PrivateRoute exact path="/Chats" component={Chat}/>
           </Switch>
         </Router>
       </AuthProvider>

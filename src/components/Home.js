@@ -142,9 +142,14 @@ const Home = () => {
 
      async function getProduct(){
         try {
-            const allBid = await db.collection('users').doc().collection('bidprodlist').get();
-            const proData = allBid.data();
-            setProdUser(proData);
+            await db.collection('users').doc().collection('bidprod').get().then((snap) => {
+                var users = [];
+                snap.forEach((doc) => {
+                    users.push(doc.data().name);
+
+                });
+                console.log("current user list:", users.join(" "))
+            });
         } catch {
             setError('Cant get Product');
         }

@@ -59,16 +59,16 @@ const Profile = () => {
                         desc: descRef.current.value,
                         avatars: fileUrl
                     }).catch(e => console.error(e));
-                });
-            setEditState(!editState);
+            });
             history.push('/Profiles');
+            setEditState(!editState);
             
         } catch {
             setError('Cant get edit2');
         }
     }
 
-    async function setProfile(){
+    async function setProfile(e){
         try {
             const edited = await db.collection('users').doc(currentUser.uid).collection('profiles').doc(currentUser.uid).get()
             const proData = edited.data();
@@ -127,7 +127,7 @@ const Profile = () => {
                 <h1 className='proname'>{user && user.name}</h1>
                 <div className="tareaandbtn" >
                  <p className="protextarea">{proUser && proUser.desc} </p>    
-                <Button type="submit" variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
+                <Button variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
                 </div>
                 </>
                 ) : (
