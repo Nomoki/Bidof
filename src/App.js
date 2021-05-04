@@ -14,7 +14,6 @@ import CreateOfferPost from './components/CreateOfferPosts';
 import ViewProduct from './components/ViewProducts';
 import Chat from './components/Chats';
 
-
 class App extends Component {
   render () {
     return (

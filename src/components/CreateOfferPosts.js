@@ -65,9 +65,8 @@ const CreateOfferPost = () => {
                         productdesc: prodDescRef.current.value
                     }).catch(e => console.error(e));
                 });
+            setEditState(!editState);  
             history.push('/');
-            setEditState(!editState);   
-            
         } catch {
             setError('Cant get edit2');
         }

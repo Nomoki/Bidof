@@ -60,9 +60,8 @@ const Profile = () => {
                         avatars: fileUrl
                     }).catch(e => console.error(e));
             });
-            history.push('/Profiles');
             setEditState(!editState);
-            
+            history.push('/Profiles');
         } catch {
             setError('Cant get edit2');
         }

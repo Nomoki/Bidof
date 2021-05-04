@@ -64,9 +64,8 @@ const CreateBidPost = () => {
                         productdesc: prodDescRef.current.value
                     }).catch(e => console.error(e));
                 });
-            history.push('/');
             setEditState(!editState);
-            
+            history.push('/');
             
         } catch {
             setError('Cant get edit2');
