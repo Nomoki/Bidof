@@ -194,17 +194,17 @@ body{
     margin-bottom: 5%;
 }
 .imgpro{
-    
     width: 500px;
     height: 500px;
     object-fit: cover;
-    position: relative;
-    left: 25%;
 }
 .imgview{
     width: 50%;
     border-style: solid;
     border-color: #707070;
+    position: relative;
+    margin: auto;
+    text-align: center;
 }
 .pricepro{
     width: 80%;
