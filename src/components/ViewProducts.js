@@ -41,15 +41,33 @@ const ViewProduct = () => {
         getUser();
     }, []);
 
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    var pic = getCookie("pic");
+    var name = getCookie("name");
+    var price = getCookie("price");
+    var des = getCookie("des");
+     
+        
+      
+
     return (
         <div>
         <React.Fragment>
             <Navbar bg="light" variant="light">
-                    <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="logo" /></Navbar.Brand>
+                    <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" className="logo" /></Link></Navbar.Brand>
                     <Nav className="mr-auto">
                         {!currentUser ? (
                             <React.Fragment>
-                                <Nav.Link href="#home">
+                                <Nav.Link>
                                     <Link to="/LogIn" className="btn btn-primary">Log In</Link>
                                 </Nav.Link>
                                 <Nav.Link href="#features">
@@ -66,17 +84,17 @@ const ViewProduct = () => {
                         )}
                     </Nav>
                 </Navbar>
-                <img src={plus} className='imgpro'></img>
+                <img src={pic} className='imgpro'></img>
                 <div className="postbox">
-                    <h2 className="pronamebox">ProductName</h2>
+                    <h2 className="pronamebox">{name}</h2>
 
                     <div className="pricebox">
-                            <h2 className="pricetag">$</h2> 
+                            <h2 className="pricetag">฿ {price}</h2> 
                     </div>
 
                     <div className="desbox">
                         <div className="despro">
-                            <p className="desprotext">Description</p>
+                            <p className="desprotext">{des}</p>
                         </div>
                     </div>
                 </div>

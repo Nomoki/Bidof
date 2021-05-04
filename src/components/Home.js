@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -162,6 +162,17 @@ const Home = () => {
         getProduct();
     }, []);
 
+    const nameRef = useRef(null);
+
+    function getCookie (e,picpro,proname,proprice,prodes){
+        document.cookie = "name="+proname;
+        document.cookie = "pic="+picpro;
+        document.cookie = "price="+proprice;
+        document.cookie = "des="+prodes;
+        history.push("/ViewProducts")
+        
+      }
+    
 
     return (
         <React.Fragment>
@@ -249,12 +260,12 @@ const Home = () => {
                 <div className='discoName'>
                     {proD.map(proD => (
 
-                        <div key={proD.id} className="disbox">
+                        <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc)}} >
                             <Row>
-                                <Col md={3}><img src={proD.produtpic} className="imgdis" /></Col>
+                                <Col md={3}><img src={proD.produtpic} className="imgdis"  /></Col>
                                 <Col md={9}>
                                     <div className="desdisbox">
-                                        <div><h1>{proD.productname}</h1></div>
+                                        <div><h1 ref={nameRef}>{proD.productname}</h1></div>
                                         <div><h3>{proD.productprice}</h3></div>
                                         <div><p>{proD.productdesc}</p></div>
                                     </div>
