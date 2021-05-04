@@ -65,8 +65,16 @@ const CreateOfferPost = () => {
                         productdesc: prodDescRef.current.value
                     }).catch(e => console.error(e));
                 });
+            await db.collection('productOffer')
+                    .doc()
+                    .set({
+                        produtpic: fileUrl,
+                        productname: prodNameRef.current.value,
+                        productprice: prodPriceRef.current.value,
+                        productdesc: prodDescRef.current.value
+                    })
             setEditState(!editState);  
-            history.push('/');
+            history.push('/Offers');
         } catch {
             setError('Cant get edit2');
         }

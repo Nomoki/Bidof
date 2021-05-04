@@ -64,6 +64,14 @@ const CreateBidPost = () => {
                         productdesc: prodDescRef.current.value
                     }).catch(e => console.error(e));
                 });
+            await db.collection('productBid')
+                    .doc()
+                    .set({
+                        produtpic: fileUrl,
+                        productname: prodNameRef.current.value,
+                        productprice: prodPriceRef.current.value,
+                        productdesc: prodDescRef.current.value
+                    })
             setEditState(!editState);
             history.push('/');
             

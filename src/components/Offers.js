@@ -138,6 +138,31 @@ const Offer = () => {
     useEffect(() => {
         getUser();
     }, []);
+
+    const [proD, setProD] = useState([]);
+
+    const getProduct = () =>{
+        try {
+            db.collection("productOffer").get().then((querySnapshot) => {
+                const productRef = [];
+                querySnapshot.forEach((doc) => {
+                    const productRefs = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    productRef.push(productRefs);
+                    console.log(doc.id, " => ", doc.data());
+                });
+                setProD(productRef);
+            });
+        } catch {
+            setError('Cant get Product');
+        }
+    } 
+
+    useEffect(() => {
+        getProduct();
+    }, []);
     
     
     
@@ -223,6 +248,14 @@ const Offer = () => {
                 <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
                 </React.Fragment>
             )}
+              {proD.map( proD =>(
+                 <div key={proD.id}>
+                    <img src={proD.produtpic}/>
+                    <div><h1>{proD.productname}</h1></div>
+                    <div><h3>{proD.productprice}</h3></div>
+                    <div><p>{proD.productdesc}</p></div>
+                </div>
+            ))}
         </React.Fragment>
     )
 }

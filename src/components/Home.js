@@ -142,17 +142,17 @@ const Home = () => {
 
     const getProduct = () =>{
         try {
-            db.collection('users').doc().collection('bidprod').get()
-            .then((querySnapshot) => {
-                const ProductRef = [];
+            db.collection("productBid").get().then((querySnapshot) => {
+                const productRef = [];
                 querySnapshot.forEach((doc) => {
-                    ProductRef = {
+                    const productRefs = {
                         id: doc.id,
                         ...doc.data()
                     };
-                    ProductRef.push(ProductRef);
+                    productRef.push(productRefs);
+                    console.log(doc.id, " => ", doc.data());
                 });
-                setProD(ProductRef);
+                setProD(productRef);
             });
         } catch {
             setError('Cant get Product');
