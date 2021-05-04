@@ -191,14 +191,16 @@ const Profile = () => {
                 <div className="bidbox">
                     <h2>MY BID</h2>
                     <Container fluid>
+                    <div className="itemoff">
                         {proD.map( proD =>(
                         <Row key={proD.id}> 
-                            <Col><img src={proD.produtpic}/></Col>
-                            <Col><h1>{proD.productname}</h1></Col>
-                            <Col><h3>{proD.productprice}</h3></Col>
-                            <Col><p>{proD.productdesc}</p></Col>
+                            <Col  md={3}><img src={proD.produtpic} className="imgprooff"/></Col>
+                            <Col  md={9}><h3>{proD.productname}</h3>
+                            <h3>฿  {proD.productprice}</h3>
+                            <p>{proD.productdesc}</p></Col>
                         </Row>
                         ))}
+                    </div>
                         <Row>
                             <Col><Link to="/CreateBidPosts" variant="secondary" className='btnnewbid'>NEW+</Link></Col>
                         </Row>

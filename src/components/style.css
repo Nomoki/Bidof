@@ -100,8 +100,8 @@ body{
 }
 .bidbox{
     position: absolute;
-    left: 10%;
-    width: 20%;
+    left: 5%;
+    width: 35%;
     border-style: solid;
     border-radius: 15px;
     border-color: #707070;
@@ -298,6 +298,9 @@ body{
     padding: 2%;
     border-radius: 15px;
     margin-top: 3%;
+    border-style: solid;
+    border-color: #707070;
+    border-width: thin;
 }
 .col{
     align-self: center;
