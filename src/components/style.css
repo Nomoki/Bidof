@@ -13,14 +13,14 @@ body{
     left: 50%;
 }
 .cos{
-    width: 50vw;
+    width: 50%;
     position: absolute;
-    left: 30%;
+    left: 26%;
     top: 20%;
 }
 .disco{
     position: absolute;
-    left: 50vw;
+    left: 45%;
     top: 40vw;
 }
 .cat{
@@ -243,4 +243,45 @@ body{
 .desprotext{
     margin-left: 1%;
     margin-right: 1%;
+}
+.imgdis{
+  object-fit: cover;
+  width:180px;
+  height:180px;
+  border-radius: 15px;
+}
+
+.diswrap{
+    width: 150px;
+    height: 150px;
+    background-color: white;
+}
+.disbox{
+    background-color: #D1D1D1;
+    width: 50vw;
+    position: relative;
+    left: 50%;
+    border-radius: 15px;
+    border-style: solid;
+    border-color:#707070;
+    border-width: thin;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+.discoName{
+    position: absolute;
+    top: 90%;
+    z-index: -1;
+}
+.desdisbox{
+    background-color: white;
+    padding: 5%;
+    height: 90%;
+    border-radius: 15px;
+}
+.col-md-3{
+    align-self: center;
+}
+.col-md-9{
+    align-self: center;
 }

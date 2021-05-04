@@ -1,8 +1,8 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert } from 'react-bootstrap';
+import { Button, Navbar, Nav, ButtonGroup, Carousel, Alert, Col, Row } from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import './style2.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
@@ -17,8 +17,8 @@ const Offer = () => {
     const [catChange4, setCatChange4] = useState(false);
     const [catChange5, setCatChange5] = useState(false);
     const [catChange6, setCatChange6] = useState(false);
-     
-     
+
+
     const catToy = (e) => {
         e.preventDefault();
         setCatChange(!catChange);
@@ -31,8 +31,8 @@ const Offer = () => {
         localStorage.setItem('catHold', JSON.stringify(catChange));
     }, [catChange])
 
-   
-    
+
+
     const catElec = (e) => {
         e.preventDefault();
         setCatChange2(!catChange2);
@@ -113,9 +113,9 @@ const Offer = () => {
     const [error, setError] = useState('');
     const history = useHistory();
 
-    async function handleLogout(){
+    async function handleLogout() {
         setError('');
-        try{
+        try {
             await logout();
             history.push("/");
         }
@@ -126,14 +126,14 @@ const Offer = () => {
 
     const [user, setUser] = useState();
 
-    async function getUser(){
+    async function getUser() {
         try {
             const documentSnapshot = await db.collection('users').doc(currentUser.uid).get();
             const userData = documentSnapshot.data();
             setUser(userData);
-          } catch {
+        } catch {
             setError('Cant get data');
-          }
+        }
     };
     useEffect(() => {
         getUser();
@@ -141,7 +141,7 @@ const Offer = () => {
 
     const [proD, setProD] = useState([]);
 
-    const getProduct = () =>{
+    const getProduct = () => {
         try {
             db.collection("productOffer").get().then((querySnapshot) => {
                 const productRef = [];
@@ -158,45 +158,45 @@ const Offer = () => {
         } catch {
             setError('Cant get Product');
         }
-    } 
+    }
 
     useEffect(() => {
         getProduct();
     }, []);
-    
-    
-    
+
+
+
     return (
         <React.Fragment>
             <Navbar bg="light" variant="light">
                 <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" className="logo" /></Link></Navbar.Brand>
                 <Nav className="mr-auto">
-                    { !currentUser ? (
-                    <React.Fragment>
-                    <Nav.Link>
-                        <Link to="/LogIn" className="btn btn-primary">Log In</Link>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <Link to="/SignUp" className="btn btn-success">Sign Up</Link>
-                    </Nav.Link>
-                    </React.Fragment>
-                      ) : (
-                    <React.Fragment>
-                        <Nav.Link>
-                            <Link to="/Profiles" className="btn btn-info">{user && user.name}</Link>
-                        </Nav.Link>
-                        <Nav.Link href="#features1">
-                            <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
-                            {error && <Alert variant="danger">{error}</Alert>}
-                        </Nav.Link>
-                    </React.Fragment>
+                    {!currentUser ? (
+                        <React.Fragment>
+                            <Nav.Link>
+                                <Link to="/LogIn" className="btn btn-primary">Log In</Link>
+                            </Nav.Link>
+                            <Nav.Link>
+                                <Link to="/SignUp" className="btn btn-success">Sign Up</Link>
+                            </Nav.Link>
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment>
+                            <Nav.Link>
+                                <Link to="/Profiles" className="btn btn-info">{user && user.name}</Link>
+                            </Nav.Link>
+                            <Nav.Link href="#features1">
+                                <Button className="btn btn-danger" onClick={handleLogout}>Sign Out</Button>
+                                {error && <Alert variant="danger">{error}</Alert>}
+                            </Nav.Link>
+                        </React.Fragment>
                     )}
-                </Nav>             
+                </Nav>
             </Navbar>
-                <ButtonGroup aria-label="Basic example" className="topbtn">
-                    <Link to="/" className="btn btn-success" >BID</Link>
-                    <Link to="/Offers" className="btn btn-primary">OFFER</Link>
-                </ButtonGroup>
+            <ButtonGroup aria-label="Basic example" className="topbtn">
+                <Link to="/" className="btn btn-success" >BID</Link>
+                <Link to="/Offers" className="btn btn-primary">OFFER</Link>
+            </ButtonGroup>
 
             <Carousel className="cos">
                 <Carousel.Item>
@@ -219,43 +219,53 @@ const Offer = () => {
             <h3 className="cat">Category</h3>
             {(!catChange && !catChange2 && !catChange3 && !catChange4 && !catChange5 && !catChange6) ? (
                 <div className="btncat">
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catToy}>
-                    <h1 className="fontcath">TOYS</h1>
-                </Button>
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catElec}>
-                <h1 className="fontcath">Electronic</h1>
-                </Button>
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFood}>
-                <h1 className="fontcath">Food & Beverage</h1>
-                </Button>
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catFasion}>
-                <h1 className="fontcath">Fashion</h1>
-                </Button>
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catAutomotive}>
-                <h1 className="fontcath">Automotive</h1>
-                </Button>
-                <Button variant="secondary" size="lg" className="btnboxh" onClick={catBooks}>
-                <h1 className="fontcath">BOOKS</h1>
-                </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catToy}>
+                        <h1 className="fontcath">TOYS</h1>
+                    </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catElec}>
+                        <h1 className="fontcath">Electronic</h1>
+                    </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catFood}>
+                        <h1 className="fontcath">Food & Beverage</h1>
+                    </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catFasion}>
+                        <h1 className="fontcath">Fashion</h1>
+                    </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catAutomotive}>
+                        <h1 className="fontcath">Automotive</h1>
+                    </Button>
+                    <Button variant="secondary" size="lg" className="btnboxh" onClick={catBooks}>
+                        <h1 className="fontcath">BOOKS</h1>
+                    </Button>
                 </div>
-                ) : (
+            ) : (
                 <React.Fragment>
-                <Toy catChange={catChange} setCatChange={setCatChange}/>
-                <Elect catChange2={catChange2} setCatChange2={setCatChange2}/>
-                <Food catChange3={catChange3} setCatChange3={setCatChange3}/>
-                <Fasions catChange4={catChange4} setCatChange4={setCatChange4}/>
-                <Automotive catChange5={catChange5} setCatChange5={setCatChange5}/>
-                <Books catChange6={catChange6} setCatChange6={setCatChange6}/>
+                    <Toy catChange={catChange} setCatChange={setCatChange} />
+                    <Elect catChange2={catChange2} setCatChange2={setCatChange2} />
+                    <Food catChange3={catChange3} setCatChange3={setCatChange3} />
+                    <Fasions catChange4={catChange4} setCatChange4={setCatChange4} />
+                    <Automotive catChange5={catChange5} setCatChange5={setCatChange5} />
+                    <Books catChange6={catChange6} setCatChange6={setCatChange6} />
                 </React.Fragment>
             )}
-              {proD.map( proD =>(
-                 <div key={proD.id}>
-                    <img src={proD.produtpic}/>
-                    <div><h1>{proD.productname}</h1></div>
-                    <div><h3>{proD.productprice}</h3></div>
-                    <div><p>{proD.productdesc}</p></div>
+            <div>
+                <div className='discoName'>
+                    {proD.map(proD => (
+                        <div key={proD.id} className="disbox">
+                            <Row>
+                                <Col md={3}><img src={proD.produtpic} className="imgdis" /></Col>
+                                <Col md={9}>
+                                    <div className="desdisbox">
+                                        <div><h1>{proD.productname}</h1></div>
+                                        <div><h3>{proD.productprice}</h3></div>
+                                        <div><p>{proD.productdesc}</p></div>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            </div>
         </React.Fragment>
     )
 }
