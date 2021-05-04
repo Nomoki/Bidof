@@ -92,6 +92,7 @@ body{
     position: relative;
     left: 35%;
     width: 30%;
+    text-align: center;
 }
 .btnpro{
     position:absolute;
@@ -193,11 +194,17 @@ body{
     margin-bottom: 5%;
 }
 .imgpro{
-    border-style: solid;
-    border-color: #707070;
-    width: 50%;
+    
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
     position: relative;
     left: 25%;
+}
+.imgview{
+    width: 50%;
+    border-style: solid;
+    border-color: #707070;
 }
 .pricepro{
     width: 80%;
@@ -304,4 +311,12 @@ body{
 }
 .col{
     align-self: center;
+}
+.btn-success {
+    color: #fff;
+    background-color: lightgray;
+    border-color: lightgray;
+}
+.btn-success:hover{
+    background-color: gray !important; 
 }
