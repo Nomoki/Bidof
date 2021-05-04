@@ -1,5 +1,5 @@
 import React from 'react';
-import './Chats.css';
+import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,12 +7,12 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom";
-import Login from './Loginch';
-import RoomList from './RoomList';
-import AddRoom from './AddRoom';
-import ChatRoom from './ChatRoom';
+import Login from './components/Login';
+import RoomList from './components/RoomList';
+import AddRoom from './components/AddRoom';
+import ChatRoom from './components/ChatRoom';
 
-function Chats() {
+function App() {
   let location = useLocation();
 
   return (
@@ -43,7 +43,7 @@ function Chats() {
   );
 }
 
-export default Chats;
+export default App;
 
 function SecureRoute({ children, ...rest }) {
   return (

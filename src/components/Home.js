@@ -187,10 +187,10 @@ const Home = () => {
                 </Nav>             
             </Navbar>
                 <ButtonGroup aria-label="Basic example" className="topbtn">
-                    <Link to="/" className="btn btn-primary">BID</Link>
+                    <Link to="/" className="btn btn-primary">BsID</Link>
                     <Link to="/Offers" className="btn btn-success">OFFER</Link>
                 </ButtonGroup>
-
+                        
             <Carousel className="cos">
                 <Carousel.Item>
                     <img
