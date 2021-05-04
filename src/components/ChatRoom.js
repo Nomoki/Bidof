@@ -17,7 +17,7 @@ import {
     InputGroupAddon
 } from 'reactstrap';
 import Moment from 'moment';
-import firebase from './Firebase';
+import firebase from './firebase';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import './stylech.css';
 

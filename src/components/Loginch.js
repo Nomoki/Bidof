@@ -9,7 +9,7 @@ import {
     Label, 
     Input
 } from 'reactstrap';
-import firebase from './Firebase';
+import firebase from './firebase';
 
 function Login() {
     const history = useHistory();
