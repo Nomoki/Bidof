@@ -208,14 +208,17 @@ const Profile = () => {
                 <div className="offerbox">
                     <h2>MY OFFER</h2>
                     <Container fluid>
+                    <div className="itemoff">
                         {proD2.map( proD2 =>(
                         <Row key={proD2.id}> 
-                            <Col><img src={proD2.produtpic}/></Col>
-                            <Col><h1>{proD2.productname}</h1></Col>
-                            <Col><h3>{proD2.productprice}</h3></Col>
-                            <Col><p>{proD2.productdesc}</p></Col>
+                            <Col><img src={proD2.produtpic} className="imgprooff"/></Col>
+                           <Col><h3>{proD2.productname}</h3>
+                            <h3>฿ {proD2.productprice}</h3>
+                            <p>{proD2.productdesc}</p></Col>
+                            
                         </Row>
                         ))}
+                    </div>
                         <Row>
                             <Col><Link to="/CreateOfferPosts" variant="secondary" className='btnnewoffer'>NEW+</Link></Col>
                         </Row>
