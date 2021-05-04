@@ -138,17 +138,21 @@ const Home = () => {
         getUser();
     }, []);
     
-    const [prodUser, setProdUser] = useState();
+    const [proD, setProD] = useState([]);
 
-     async function getProduct(){
+    const getProduct = () =>{
         try {
-            await db.collection('users').doc().collection('bidprod').get().then((snap) => {
-                var users = [];
-                snap.forEach((doc) => {
-                    users.push(doc.data().name);
-
+            db.collection('users').doc().collection('bidprod').get()
+            .then((querySnapshot) => {
+                const ProductRef = [];
+                querySnapshot.forEach((doc) => {
+                    ProductRef = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    ProductRef.push(ProductRef);
                 });
-                console.log("current user list:", users.join(" "))
+                setProD(ProductRef);
             });
         } catch {
             setError('Cant get Product');
@@ -242,8 +246,15 @@ const Home = () => {
                 </React.Fragment>
             )}
             <div>
-
-            </div>
+            {proD.map( proD =>(
+                 <div key={proD.id}>
+                    <img src={proD.produtpic}/>
+                    <div><h1>{proD.productname}</h1></div>
+                    <div><h3>{proD.productprice}</h3></div>
+                    <div><p>{proD.productdesc}</p></div>
+                </div>
+            ))}
+            </div>      
         </React.Fragment>
     )
 }
