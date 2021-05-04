@@ -91,6 +91,53 @@ const Profile = () => {
 
     }
 
+    const [proD, setProD] = useState([]);
+    const [proD2, setProD2] = useState([]);
+
+    const getProduct = () =>{
+        try {
+            db.collection("users").doc(currentUser.uid).collection('bidprod').get().then((querySnapshot) => {
+                const productRef = [];
+                querySnapshot.forEach((doc) => {
+                    const productRefs = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    productRef.push(productRefs);
+                    console.log(doc.id, " => ", doc.data());
+                });
+                setProD(productRef);
+            });
+        } catch {
+            setError('Cant get Product');
+        }
+    } 
+    useEffect(() => {
+        getProduct();
+    }, []);
+
+    const getProduct2 = () =>{
+        try {
+            db.collection("users").doc(currentUser.uid).collection('offerprod').get().then((querySnapshot) => {
+                const productRef = [];
+                querySnapshot.forEach((doc) => {
+                    const productRefs = {
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    productRef.push(productRefs);
+                    console.log(doc.id, " => ", doc.data());
+                });
+                setProD2(productRef);
+            });
+        } catch {
+            setError('Cant get Product');
+        }
+    } 
+    useEffect(() => {
+        getProduct2();
+    }, []);
+
     return (
         <div>
             <React.Fragment>
@@ -144,21 +191,14 @@ const Profile = () => {
                 <div className="bidbox">
                     <h2>MY BID</h2>
                     <Container fluid>
-                        <Row>
-                            <Col>1 of 1</Col>
+                        {proD.map( proD =>(
+                        <Row key={proD.id}> 
+                            <Col><img src={proD.produtpic}/></Col>
+                            <Col><h1>{proD.productname}</h1></Col>
+                            <Col><h3>{proD.productprice}</h3></Col>
+                            <Col><p>{proD.productdesc}</p></Col>
                         </Row>
-                        <Row>
-                            <Col>1 of 2</Col>
-                        </Row>
-                        <Row>
-                            <Col>1 of 3</Col>
-                        </Row>
-                        <Row>
-                            <Col>1 of 4</Col>
-                        </Row>
-                        <Row>
-                            <Col>1 of 5</Col>
-                        </Row>
+                        ))}
                         <Row>
                             <Col><Link to="/CreateBidPosts" variant="secondary" className='btnnewbid'>NEW+</Link></Col>
                         </Row>
@@ -168,15 +208,14 @@ const Profile = () => {
                 <div className="offerbox">
                     <h2>MY OFFER</h2>
                     <Container fluid>
-                        <Row>
-                            <Col>1 of 1</Col>
+                        {proD2.map( proD2 =>(
+                        <Row key={proD2.id}> 
+                            <Col><img src={proD2.produtpic}/></Col>
+                            <Col><h1>{proD2.productname}</h1></Col>
+                            <Col><h3>{proD2.productprice}</h3></Col>
+                            <Col><p>{proD2.productdesc}</p></Col>
                         </Row>
-                        <Row>
-                            <Col>1 of 2</Col>
-                        </Row>
-                        <Row>
-                            <Col>1 of 3</Col>
-                        </Row>
+                        ))}
                         <Row>
                             <Col><Link to="/CreateOfferPosts" variant="secondary" className='btnnewoffer'>NEW+</Link></Col>
                         </Row>
