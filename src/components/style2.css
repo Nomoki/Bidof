@@ -10,18 +10,18 @@ body{
 }
 .topbtn{
     position: relative;
-    left: 50%;
+    left:47%;
 }
 .cos{
     width: 50vw;
     position: absolute;
-    left: 30%;
+    left: 25%;
     top: 20%;
 }
 .disco{
     position: absolute;
-    left: 50vw;
-    top: 40vw;
+    left: 47%;
+    top: 80%;
 }
 .cat{
     position: absolute;
