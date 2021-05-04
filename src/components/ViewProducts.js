@@ -84,7 +84,7 @@ const ViewProduct = () => {
                         )}
                     </Nav>
                 </Navbar>
-                <div><img src={pic} className='imgpro'></img></div>
+                <div className="imgview"><img src={pic} className='imgpro'></img></div>
                 <div className="postbox">
                     <h2 className="pronamebox">{name}</h2>
 

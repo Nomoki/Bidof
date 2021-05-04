@@ -171,7 +171,6 @@ const Home = () => {
         document.cookie = "price="+proprice;
         document.cookie = "des="+prodes;
         history.push("/ViewProducts")
-        
       }
     
 
