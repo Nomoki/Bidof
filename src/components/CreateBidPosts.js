@@ -155,7 +155,9 @@ const CreateBidPost = () => {
                 </>) : (
                 <>
                 <form onSubmit={editProduct}>
+                <div className="selpicprobid">
                 <input type="file" onChange={onFileChange}/>
+                </div>
                 <div className="postbox">
                     <Form.Group >
                         <Form.Control ref={prodNameRef} className="proname" size="lg" type="text" placeholder="Product name" />

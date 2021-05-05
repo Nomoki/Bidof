@@ -12,6 +12,10 @@ body{
     position: relative;
     left: 50%;
 }
+.selpicprobid{
+    position: relative;
+    left: 45%;
+}
 .cos{
     width: 50%;
     position: absolute;
