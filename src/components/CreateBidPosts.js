@@ -70,7 +70,9 @@ const CreateBidPost = () => {
                         produtpic: fileUrl,
                         productname: prodNameRef.current.value,
                         productprice: prodPriceRef.current.value,
-                        productdesc: prodDescRef.current.value
+                        productdesc: prodDescRef.current.value,
+                        nameuser: `${user && user.name}`,
+                        picuser: `${proUser && proUser.avatars}`
                     })
             setEditState(!editState);
             history.push('/');
@@ -103,6 +105,22 @@ const CreateBidPost = () => {
         setFileUrl(await fileRef.getDownloadURL())
 
     }
+    
+    const [proUser, setProUser] = useState();
+
+    async function setProfile() {
+        try {
+            const edited = await db.collection('users').doc(currentUser.uid).collection('profiles').doc(currentUser.uid).get()
+            const proData = edited.data();
+            setProUser(proData);
+        } catch {
+            setError('Cant get edit');
+        }
+    }
+    useEffect(() => {
+        setProfile();
+    }, []);
+
 
     return (
         <div>
