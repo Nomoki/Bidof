@@ -336,6 +336,75 @@ body{
 }
 
 @media screen and (max-width: 992px) {
-   
+    .bidbox {
+        position:relative;
+        left: 30%;
+        width: 35%;
+        border-style: solid;
+        border-radius: 15px;
+        border-color: #707070;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 5%;
+    }
+
+    .offerbox {
+        position: relative;
+        left: 30%;
+        width: 35%;
+        border-style: solid;
+        border-radius: 15px;
+        border-color: #707070;
+        background-color: #F1F1F1;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 5%;
+    }
+
+    .profilepic {
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        position: relative;
+        left: 35%;
+        object-fit: cover;
+    }
 
 }
+
+@media screen and (max-width: 600px) {
+    .bidbox {
+        position:relative;
+        left: 10%;
+        width: 80%;
+        border-style: solid;
+        border-radius: 15px;
+        border-color: #707070;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 5%;
+    }
+
+    .offerbox {
+        position: relative;
+        left: 10%;
+        width: 80%;
+        border-style: solid;
+        border-radius: 15px;
+        border-color: #707070;
+        background-color: #F1F1F1;
+        text-align: center;
+        overflow: hidden;
+        margin-top: 5%;
+    }
+
+    .profilepic {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        position: relative;
+        left: 30%;
+        object-fit: cover;
+    }
+
+  }
