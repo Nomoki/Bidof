@@ -165,11 +165,13 @@ const Offer = () => {
         getProduct();
     }, []);
 
-    function getCookie (e,picpro,proname,proprice,prodes){
+    function getCookie (e,picpro,proname,proprice,prodes,nuser,puser){
         document.cookie = "name="+proname;
         document.cookie = "pic="+picpro;
         document.cookie = "price="+proprice;
         document.cookie = "des="+prodes;
+        document.cookie = "nameuser="+nuser;
+        document.cookie = "picuser="+puser;
         history.push("/ViewProducts")
       }
 
@@ -259,14 +261,14 @@ const Offer = () => {
             <div>
                 <div className='discoName'>
                     {proD.map(proD => (
-                        <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc)}} >
+                        <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc,proD.nameuser,proD.picuser)}} >
                             <Row>
                                 <Col md={4}><img src={proD.produtpic} className="imgdis" /></Col>
                                 <Col md={8}>
                                     <div className="desdisbox">
                                         <div><h1>{proD.productname}</h1></div>
                                         <div><h3>฿ {proD.productprice}</h3></div>
-                                        <div><p>{proD.productdesc}</p></div>
+                                        <div><p>{proD.productdesc}</p><p style={{display: "none"}}>{proD.nameuser}</p><img style={{display: "none"}} src={proD.picuser}/></div>
                                     </div>
                                 </Col>
                             </Row>
