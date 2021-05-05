@@ -15,6 +15,8 @@ import ViewProduct from './components/ViewProducts';
 import Chat from './components/Chats';
 import RoomList from './components/RoomList';
 import Login from './components/Loginch';
+import ChatRoom from './components/ChatRoom';
+import AddRoom from './components/AddRoom';
 
 class App extends Component {
   render () {
@@ -34,6 +36,8 @@ class App extends Component {
             <Route exact path="/Chats" component={Chat}/>
             <Route exact path="/RoomList" component={RoomList}/>
             <Route exact path="/Loginch" component={Login}/>
+            <Route exact path="/ChatRoom" component={ChatRoom}/>
+            <Route exact path="/AddRoom" component={AddRoom}/>
           </Switch>
         </Router>
       </AuthProvider>
