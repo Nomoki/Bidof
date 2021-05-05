@@ -57,7 +57,16 @@ const ViewProduct = () => {
     var des = getCookie("des");
     var upic = getCookie("picuser");
     var uname = getCookie("nameuser");
-        
+    var udesc = getCookie("descuser");
+
+    
+
+    function getCookie2 (e,nauser,piuser,pdesc){
+        document.cookie = "namesuser="+nauser;
+        document.cookie = "pictureuser="+piuser;
+        document.cookie = "desciptuser="+pdesc;
+        history.push("/ViewProfiles")
+      }
       
 
     return (
@@ -103,9 +112,10 @@ const ViewProduct = () => {
                 <div className="proprofile">
                             <img className="avapro" src={upic}/>
                             <h3 className="Propic">{uname}</h3>
+                            <h3 style={{display: "none"}} className="Propic">{udesc}</h3>
                             <div className="btnprogrup">
                             <Link to="/Chats"><Button variant="light">CHAT</Button></Link>
-                            <Button variant="light">PROFILE</Button>
+                            <Button onClick={(e)=>{getCookie2(e,upic,uname,udesc)}} variant="light">PROFILE</Button>
                             </div>
                 </div>
                 </React.Fragment>

@@ -17,6 +17,7 @@ import RoomList from './components/RoomList';
 import Login from './components/Loginch';
 import ChatRoom from './components/ChatRoom';
 import AddRoom from './components/AddRoom';
+import ViewProfile from './components/ViewProfiles';
 
 class App extends Component {
   render () {
@@ -33,6 +34,7 @@ class App extends Component {
             <Route exact path="/SignUp" component={SignUp}/>
             <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/Forgot-Password" component={ForgotPassword}/>
+            <Route exact path="/ViewProfiles" component={ViewProfile}/>
             <Route exact path="/Chats" component={Chat}/>
             <Route exact path="/RoomList" component={RoomList}/>
             <Route exact path="/Loginch" component={Login}/>

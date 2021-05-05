@@ -165,13 +165,14 @@ const Offer = () => {
         getProduct();
     }, []);
 
-    function getCookie (e,picpro,proname,proprice,prodes,nuser,puser){
+    function getCookie (e,picpro,proname,proprice,prodes,nuser,puser,pdesc){
         document.cookie = "name="+proname;
         document.cookie = "pic="+picpro;
         document.cookie = "price="+proprice;
         document.cookie = "des="+prodes;
         document.cookie = "nameuser="+nuser;
         document.cookie = "picuser="+puser;
+        document.cookie = "descuser="+pdesc;
         history.push("/ViewProducts")
       }
 
@@ -262,14 +263,14 @@ const Offer = () => {
                 <div className='discoName'>
                     {proD.map(proD => (
                         
-                        <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc,proD.nameuser,proD.picuser)}} >
+                        <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc,proD.nameuser,proD.picuser,proD.descuser)}} >
                             <Row>
                                 <Col md={4}><img src={proD.produtpic} className="imgdis" /></Col>
                                 <Col md={8}>
                                     <div className="desdisbox">
                                         <div><h1>{proD.productname}</h1></div>
                                         <div><h3>฿ {proD.productprice}</h3></div>
-                                        <div><p>{proD.productdesc}</p><p style={{display: "none"}}>{proD.nameuser}</p><img style={{display: "none"}} src={proD.picuser}/></div>
+                                        <div><p>{proD.productdesc}</p><p style={{display: "none"}}>{proD.nameuser}</p><img style={{display: "none"}} src={proD.picuser}/><p style={{display: "none"}}>{proD.descuser}</p></div>
                                     </div>
                                 </Col>
                             </Row>

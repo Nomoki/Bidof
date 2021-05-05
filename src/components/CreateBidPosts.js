@@ -61,7 +61,10 @@ const CreateBidPost = () => {
                         produtpic: fileUrl,
                         productname: prodNameRef.current.value,
                         productprice: prodPriceRef.current.value,
-                        productdesc: prodDescRef.current.value
+                        productdesc: prodDescRef.current.value,
+                        nameuser: `${user && user.name}`,
+                        picuser: `${proUser && proUser.avatars}`,
+                        descuser: `${proUser && proUser.desc}`
                     }).catch(e => console.error(e));
                 });
             await db.collection('productBid')
@@ -72,7 +75,8 @@ const CreateBidPost = () => {
                         productprice: prodPriceRef.current.value,
                         productdesc: prodDescRef.current.value,
                         nameuser: `${user && user.name}`,
-                        picuser: `${proUser && proUser.avatars}`
+                        picuser: `${proUser && proUser.avatars}`,
+                        descuser: `${proUser && proUser.desc}`
                     })
             setEditState(!editState);
             history.push('/');
