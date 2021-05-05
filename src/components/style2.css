@@ -16,7 +16,7 @@ body{
     width: 50vw;
     position: absolute;
     left: 25%;
-    top: 20%;
+    top: 23%;
 }
 .disco{
     position: absolute;
@@ -76,4 +76,37 @@ body{
 .fontcath{
     color: #707070;
     font-size: 1vw;
+}
+@media screen and (max-width: 992px) {
+    .cos{
+        width: 80%;
+        position: absolute;
+
+        left: 10%;
+    }
+    .disco {
+    position: absolute;
+    left: 40%;
+    top: 60%;
+}
+.topbtn {
+    position: relative;
+    left: 40%;
+}
+.discoName {
+    position: absolute;
+    top: 70%;
+    z-index: -1;
+}
+.btncat {
+    position: absolute;
+    top: 102%;
+    left: -30%;
+}
+.cat {
+    position: absolute;
+    top: 95%;
+    left: -30%;
+}
+
 }
