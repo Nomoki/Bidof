@@ -88,7 +88,7 @@ const ViewProfile = () => {
                    </>
                 ) : (
                     <>
-                    {`${currentUser.name}` != `${userName}` ? (
+                    {`${user && user.name}` == `${userName}` ? (
                         <Redirect to="/Profiles"/>
                     ) : (
                         <>
