@@ -55,7 +55,8 @@ const ViewProduct = () => {
     var name = getCookie("name");
     var price = getCookie("price");
     var des = getCookie("des");
-     
+    var upic = getCookie("picuser");
+    var uname = getCookie("nameuser");
         
       
 
@@ -100,8 +101,8 @@ const ViewProduct = () => {
                 </div>
 
                 <div className="proprofile">
-                            <img className="avapro" src={avatar}/>
-                            <h3 className="Propic">Name</h3>
+                            <img className="avapro" src={upic}/>
+                            <h3 className="Propic">{uname}</h3>
                             <div className="btnprogrup">
                             <Link to="/Chats"><Button variant="light">CHAT</Button></Link>
                             <Button variant="light">PROFILE</Button>
