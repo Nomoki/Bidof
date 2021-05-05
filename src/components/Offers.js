@@ -7,6 +7,7 @@ import logo from './bidoflogo.png';
 import './style2.css';
 import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 import { auth, db } from '../config';
+import picad from './adspic.png';
 
 
 const Offer = () => {
@@ -209,14 +210,14 @@ const Offer = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://picsum.photos/800/400"
+                        src={picad}
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://picsum.photos/800/400"
+                        src={picad}
                         alt="Second slide"
                     />
 

@@ -171,17 +171,19 @@ const Profile = () => {
                     <>
                         <img src={proUser && proUser.avatars} className='profilepic' alt=''></img>
                         <h1 className='proname'>{user && user.name}</h1>
-                        <div className="tareaandbtn" >
+
                             <p className="protextarea">{proUser && proUser.desc} </p>
-                            <Button variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
-                        </div>
+                  
+                        <Button variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
                     </>
                 ) : (
                     <>
                         <form onSubmit={editProfile}>
-                            <input type="file" className="protextarea" onChange={onFileChange} />
-                            <div className="tareaandbtn" >
+                            <img src={avatar} className='profilepic'/>
+                            <input type="file" className="btnselpic" onChange={onFileChange} />
+                            
                                 <input ref={descRef} className="protextarea" placeholder="Description"></input>
+                            <div className="tareaandbtn" >
                                 <Button type="submit" variant="secondary" className="btnpro">submit</Button>
                             </div>
                         </form>
@@ -194,8 +196,8 @@ const Profile = () => {
                         <div className="itemoff">
                             {proD.map(proD => (
                                 <Row key={proD.id}>
-                                    <Col md={3}><img src={proD.produtpic} className="imgprooff" /></Col>
-                                    <Col md={9}><h3>{proD.productname}</h3>
+                                    <Col><img src={proD.produtpic} className="imgprooff" /></Col>
+                                    <Col><h3>{proD.productname}</h3>
                                         <h3>฿  {proD.productprice}</h3>
                                         <p>{proD.productdesc}</p></Col>
                                 </Row>
