@@ -106,7 +106,7 @@ function ChatRoom() {
           }
         });
     
-        history.goBack();
+        history.push("/RoomList");
     }
 
     return (

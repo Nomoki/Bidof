@@ -103,8 +103,8 @@ const ViewProduct = () => {
                             <img className="avapro" src={avatar}/>
                             <h3 className="Propic">Name</h3>
                             <div className="btnprogrup">
-                            <Button variant="light">CHAT</Button>{' '}
-                            <Button variant="light">PROFILE</Button>{' '}
+                            <Link to="/Chats"><Button variant="light">CHAT</Button></Link>
+                            <Button variant="light">PROFILE</Button>
                             </div>
                 </div>
                 </React.Fragment>
