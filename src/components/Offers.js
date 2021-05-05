@@ -261,6 +261,7 @@ const Offer = () => {
             <div>
                 <div className='discoName'>
                     {proD.map(proD => (
+                        
                         <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc,proD.nameuser,proD.picuser)}} >
                             <Row>
                                 <Col md={4}><img src={proD.produtpic} className="imgdis" /></Col>
