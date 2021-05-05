@@ -369,6 +369,20 @@ body{
         left: 35%;
         object-fit: cover;
     }
+    .btnprogrup {
+        position: absolute;
+        left:45%;
+        top: 45%;
+    }
+    .imgpro {
+        width: 80%;
+       
+    }
+    .Propic {
+        position: absolute;
+        left: 45%;
+        top: 20%;
+    }
 
 }
 
@@ -405,6 +419,14 @@ body{
         position: relative;
         left: 30%;
         object-fit: cover;
+    }
+    .avapro {
+        width: 30%;
+        height: auto;
+        border-radius: 50px;
+        position: absolute;
+        top: 15%;
+        left: 5%;
     }
 
   }
