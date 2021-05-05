@@ -265,7 +265,7 @@ const Offer = () => {
                                 <Col md={8}>
                                     <div className="desdisbox">
                                         <div><h1>{proD.productname}</h1></div>
-                                        <div><h3>{proD.productprice}</h3></div>
+                                        <div><h3>฿ {proD.productprice}</h3></div>
                                         <div><p>{proD.productdesc}</p></div>
                                     </div>
                                 </Col>
