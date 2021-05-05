@@ -53,7 +53,10 @@ const ViewProfile = () => {
     var userPic = getCookie2("picuser");
     var userName = getCookie2("nameuser");
     var userDesc = getCookie2("descuser");
-    var yourName = `${user && user.name}`;
+
+    if (`${currentUser.name}` != `${userName}`) {
+        return <Redirect to="/Profiles"/>
+    }
 
     return (
         <div>
@@ -80,16 +83,10 @@ const ViewProfile = () => {
                         )}
                     </Nav>
                 </Navbar>
-                {({yourName} != {userName}) ? (
-                <>
+               
                 <img src={userPic} className='profilepic' alt=''></img>
                 <h1 className='proname'>{userName}</h1>
                 <p className="protextarea">{userDesc} </p>
-                </>
-                ) : (
-                    <Redirect to="/Profiles" />
-                )
-                }
             </React.Fragment>
         </div>
     )
