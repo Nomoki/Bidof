@@ -182,9 +182,9 @@ const Profile = () => {
                             <img src={avatar} className='profilepic'/>
                             <input type="file" className="btnselpic" onChange={onFileChange} />
                             
-                                <input ref={descRef} className="protextarea" placeholder="Description"></input>
+                                <input ref={descRef} className="protextareaedit" placeholder="Description"></input>
                             <div className="tareaandbtn" >
-                                <Button type="submit" variant="secondary" className="btnpro">submit</Button>
+                                <Button type="submit" variant="secondary">submit</Button>
                             </div>
                         </form>
                     </>
