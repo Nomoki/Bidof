@@ -258,8 +258,8 @@ const Home = () => {
 
                         <div key={proD.id} className="disbox" onClick={(e)=>{getCookie(e, proD.produtpic,proD.productname,proD.productprice,proD.productdesc)}} >
                             <Row>
-                                <Col md={3}><img src={proD.produtpic} className="imgdis"  /></Col>
-                                <Col md={9}>
+                                <Col md={4}><img src={proD.produtpic} className="imgdis"  /></Col>
+                                <Col md={8}>
                                     <div className="desdisbox">
                                         <div><h1 ref={nameRef}>{proD.productname}</h1></div>
                                         <div><h3>{proD.productprice}</h3></div>

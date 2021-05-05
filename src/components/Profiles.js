@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Navbar, Nav, Alert,Container,Row,Col } from 'react-bootstrap';
+import { Button, Navbar, Nav, Alert, Container, Row, Col } from 'react-bootstrap';
 import logo from './bidoflogo.png';
 import avatar from './avatar.png';
 import './style.css';
@@ -44,21 +44,21 @@ const Profile = () => {
     const [editState, setEditState] = useState(false);
     const descRef = useRef();
 
-    const proState = (e) =>{
+    const proState = (e) => {
         e.preventDefault();
         setEditState(!editState);
     }
 
-   
-    async function editProfile(e){
+
+    async function editProfile(e) {
         e.preventDefault();
         try {
             await db.collection('users').doc(currentUser.uid).get().then((snap) => {
-                    const profileRef = snap.ref.collection('profiles').doc(currentUser.uid);
-                    profileRef.set({
-                        desc: descRef.current.value,
-                        avatars: fileUrl
-                    }).catch(e => console.error(e));
+                const profileRef = snap.ref.collection('profiles').doc(currentUser.uid);
+                profileRef.set({
+                    desc: descRef.current.value,
+                    avatars: fileUrl
+                }).catch(e => console.error(e));
             });
             setEditState(!editState);
             history.push('/Profiles');
@@ -67,7 +67,7 @@ const Profile = () => {
         }
     }
 
-    async function setProfile(e){
+    async function setProfile(e) {
         try {
             const edited = await db.collection('users').doc(currentUser.uid).collection('profiles').doc(currentUser.uid).get()
             const proData = edited.data();
@@ -75,7 +75,7 @@ const Profile = () => {
         } catch {
             setError('Cant get edit');
         }
-    } 
+    }
     useEffect(() => {
         setProfile();
     }, []);
@@ -94,7 +94,7 @@ const Profile = () => {
     const [proD, setProD] = useState([]);
     const [proD2, setProD2] = useState([]);
 
-    const getProduct = () =>{
+    const getProduct = () => {
         try {
             db.collection("users").doc(currentUser.uid).collection('bidprod').get().then((querySnapshot) => {
                 const productRef = [];
@@ -111,12 +111,12 @@ const Profile = () => {
         } catch {
             setError('Cant get Product');
         }
-    } 
+    }
     useEffect(() => {
         getProduct();
     }, []);
 
-    const getProduct2 = () =>{
+    const getProduct2 = () => {
         try {
             db.collection("users").doc(currentUser.uid).collection('offerprod').get().then((querySnapshot) => {
                 const productRef = [];
@@ -133,7 +133,7 @@ const Profile = () => {
         } catch {
             setError('Cant get Product');
         }
-    } 
+    }
     useEffect(() => {
         getProduct2();
     }, []);
@@ -164,43 +164,43 @@ const Profile = () => {
                     </Nav>
                 </Navbar>
 
-                    
-                
+
+
 
                 {!editState ? (
-                <>
-                <img src={proUser && proUser.avatars} className='profilepic' alt=''></img>
-                <h1 className='proname'>{user && user.name}</h1>
-                <div className="tareaandbtn" >
-                 <p className="protextarea">{proUser && proUser.desc} </p>    
-                <Button variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
-                </div>
-                </>
+                    <>
+                        <img src={proUser && proUser.avatars} className='profilepic' alt=''></img>
+                        <h1 className='proname'>{user && user.name}</h1>
+                        <div className="tareaandbtn" >
+                            <p className="protextarea">{proUser && proUser.desc} </p>
+                            <Button variant="secondary" className="btnpro" onClick={proState} >Edit</Button>
+                        </div>
+                    </>
                 ) : (
-                <>
-                <form onSubmit={editProfile}>
-                <input type="file" className="protextarea" onChange={onFileChange}/>
-                <div className="tareaandbtn" >
-                <input ref={descRef} className="protextarea" placeholder="Description"></input>
-                <Button type="submit" variant="secondary" className="btnpro">submit</Button>
-                </div>
-                </form>
-                </>
+                    <>
+                        <form onSubmit={editProfile}>
+                            <input type="file" className="protextarea" onChange={onFileChange} />
+                            <div className="tareaandbtn" >
+                                <input ref={descRef} className="protextarea" placeholder="Description"></input>
+                                <Button type="submit" variant="secondary" className="btnpro">submit</Button>
+                            </div>
+                        </form>
+                    </>
                 )
                 }
                 <div className="bidbox">
                     <h2>MY BID</h2>
                     <Container fluid>
-                    <div className="itemoff">
-                        {proD.map( proD =>(
-                        <Row key={proD.id}> 
-                            <Col  md={3}><img src={proD.produtpic} className="imgprooff"/></Col>
-                            <Col  md={9}><h3>{proD.productname}</h3>
-                            <h3>฿  {proD.productprice}</h3>
-                            <p>{proD.productdesc}</p></Col>
-                        </Row>
-                        ))}
-                    </div>
+                        <div className="itemoff">
+                            {proD.map(proD => (
+                                <Row key={proD.id}>
+                                    <Col md={3}><img src={proD.produtpic} className="imgprooff" /></Col>
+                                    <Col md={9}><h3>{proD.productname}</h3>
+                                        <h3>฿  {proD.productprice}</h3>
+                                        <p>{proD.productdesc}</p></Col>
+                                </Row>
+                            ))}
+                        </div>
                         <Row>
                             <Col><Link to="/CreateBidPosts" variant="secondary" className='btnnewbid'>NEW+</Link></Col>
                         </Row>
@@ -210,17 +210,17 @@ const Profile = () => {
                 <div className="offerbox">
                     <h2>MY OFFER</h2>
                     <Container fluid>
-                    <div className="itemoff">
-                        {proD2.map( proD2 =>(
-                        <Row key={proD2.id}> 
-                            <Col><img src={proD2.produtpic} className="imgprooff"/></Col>
-                           <Col><h3>{proD2.productname}</h3>
-                            <h3>฿ {proD2.productprice}</h3>
-                            <p>{proD2.productdesc}</p></Col>
-                            
-                        </Row>
-                        ))}
-                    </div>
+                        <div className="itemoff">
+                            {proD2.map(proD2 => (
+                                <Row key={proD2.id}>
+                                    <Col><img src={proD2.produtpic} className="imgprooff" /></Col>
+                                    <Col><h3>{proD2.productname}</h3>
+                                        <h3>฿ {proD2.productprice}</h3>
+                                        <p>{proD2.productdesc}</p></Col>
+
+                                </Row>
+                            ))}
+                        </div>
                         <Row>
                             <Col><Link to="/CreateOfferPosts" variant="secondary" className='btnnewoffer'>NEW+</Link></Col>
                         </Row>

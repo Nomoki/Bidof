@@ -285,7 +285,7 @@ body{
 .desdisbox{
     background-color: white;
     padding: 5%;
-    height: 90%;
+    height: 100%;
     border-radius: 15px;
 }
 .col-md-3{
@@ -319,4 +319,9 @@ body{
 }
 .btn-success:hover{
     background-color: gray !important; 
+}
+
+@media screen and (max-width: 992px) {
+   
+
 }
