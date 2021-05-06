@@ -67,7 +67,7 @@ const Profile = () => {
         }
     }
 
-    async function setProfile(e) {
+    async function setProfile() {
         try {
             const edited = await db.collection('users').doc(currentUser.uid).collection('profiles').doc(currentUser.uid).get()
             const proData = edited.data();
