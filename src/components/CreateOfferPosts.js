@@ -155,7 +155,7 @@ const CreateOfferPost = () => {
                 </Navbar>
                 {!editState ? (
                 <>
-                <img  src={plus} className='imgplus'></img>
+                <img  src={plus} className='imgplus' onClick={proState} ></img>
                 <div className="postbox">
                     <Form.Group >
                         <Form.Control disabled="disabled" className="proname" size="lg" type="text" placeholder="Product name" />
@@ -171,7 +171,6 @@ const CreateOfferPost = () => {
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Control disabled="disabled" as="textarea" rows={3} placeholder="Description"/>
                         </Form.Group>
-                        <Button onClick={proState} variant="secondary" className="editpost">EDIT</Button>
                     </div>
                 </div>
                 </>) : (
