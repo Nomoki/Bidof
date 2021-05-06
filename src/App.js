@@ -12,9 +12,7 @@ import Profile from './components/Profiles';
 import CreateBidPost from './components/CreateBidPosts';
 import CreateOfferPost from './components/CreateOfferPosts';
 import ViewProduct from './components/ViewProducts';
-import Chat from './components/Chats';
 import RoomList from './components/RoomList';
-import Login from './components/Loginch';
 import ChatRoom from './components/ChatRoom';
 import AddRoom from './components/AddRoom';
 import ViewProfile from './components/ViewProfiles';
@@ -35,11 +33,9 @@ class App extends Component {
             <Route exact path="/LogIn" component={LogIn}/>
             <Route exact path="/Forgot-Password" component={ForgotPassword}/>
             <Route exact path="/ViewProfiles" component={ViewProfile}/>
-            <Route exact path="/Chats" component={Chat}/>
-            <Route exact path="/RoomList" component={RoomList}/>
-            <Route exact path="/Loginch" component={Login}/>
-            <Route exact path="/ChatRoom" component={ChatRoom}/>
-            <Route exact path="/AddRoom" component={AddRoom}/>
+            <PrivateRoute exact path="/RoomList" component={RoomList}/>
+            <PrivateRoute exact path="/ChatRoom/:room" component={ChatRoom}/>
+            <PrivateRoute exact path="/AddRoom" component={AddRoom}/>
           </Switch>
         </Router>
       </AuthProvider>

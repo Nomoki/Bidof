@@ -72,12 +72,12 @@ function RoomList() {
             }
         });
     
-        history.push('/chatroom/' + roomname);
+        history.push('/ChatRoom/' + roomname);
     }
 
     const logout = () => {
         localStorage.removeItem('nickname');
-        history.push('/login');
+        history.push('/');
     }
 
     return (
@@ -86,10 +86,10 @@ function RoomList() {
                 <Spinner color="primary" />
             }
             <Jumbotron>
-                <h3>{nickname} <Button onClick={() => { logout() }}>Logout</Button></h3>
+                <h3>{nickname} <Button onClick={() => { logout() }}>Back to Menu</Button></h3>
                 <h2>Room List</h2>
                 <div>
-                    <Link to="/addroom">Add Room</Link>
+                    <Link to="/AddRoom">Add Room</Link>
                 </div>
                 <ListGroup>
                     {room.map((item, idx) => (

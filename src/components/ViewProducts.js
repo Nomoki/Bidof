@@ -9,6 +9,8 @@ import { Toy, Elect, Food, Fasions, Automotive, Books } from './Category';
 import { auth, db } from '../config';
 import plus from './plus.png';
 import avatar from './avatar.png';
+import firebase from './firebase';
+import { Spinner } from 'reactstrap';
 
 const ViewProduct = () => {
     const { currentUser, logout, } = useAuth();
@@ -66,12 +68,36 @@ const ViewProduct = () => {
         document.cookie = "pictureuser="+piuser;
         document.cookie = "desciptuser="+pdesc;
         history.push("/ViewProfiles")
-      }
-      
+    }
+
+    const creds = { nickname: `${user && user.name}` };
+    const [showLoading, setShowLoading] = useState(false);
+    const ref = firebase.database().ref('users/');
+
+    const loginchat = (e) => {
+        e.preventDefault();
+        setShowLoading(true);
+        ref.orderByChild('nickname').equalTo(creds.nickname).once('value', snapshot => {
+            if (snapshot.exists()) {
+                localStorage.setItem('nickname', creds.nickname);
+                history.push('/RoomList');
+                setShowLoading(false);
+            } else {
+                const newUser = firebase.database().ref('users/').push();
+                newUser.set(creds);
+                localStorage.setItem('nickname', creds.nickname);
+                history.push('/RoomList');
+                setShowLoading(false);
+            }
+        });
+    }
 
     return (
         <div>
         <React.Fragment>
+        {showLoading &&
+                <Spinner color="primary" />
+            }
             <Navbar bg="light" variant="light">
                     <Navbar.Brand><Link to="/"><img src={logo} alt="Logo" className="logo" /></Link></Navbar.Brand>
                     <Nav className="mr-auto">
@@ -114,7 +140,7 @@ const ViewProduct = () => {
                             <h3 className="Propic">{uname}</h3>
                             <h3 style={{display: "none"}} className="Propic">{udesc}</h3>
                             <div className="btnprogrup">
-                            <Link to="/Chats"><Button variant="light">CHAT</Button></Link>
+                            <Button onClick={loginchat} variant="light">CHAT</Button>
                             <Button onClick={(e)=>{getCookie2(e,upic,uname,udesc)}} variant="light">PROFILE</Button>
                             </div>
                 </div>
