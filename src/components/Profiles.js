@@ -184,7 +184,8 @@ const Profile = () => {
                             
                                 <input ref={descRef} className="protextareaedit" placeholder="Description"></input>
                             <div className="tareaandbtn" >
-                                <Button type="submit" variant="secondary">submit</Button>
+                                <Button type="submit" variant="secondary">submit</Button> <br/><br/>
+                                <Link to="/Profiles"><Button onClick={proState} variant="danger">cancel</Button></Link>
                             </div>
                         </form>
                     </>
