@@ -105,7 +105,7 @@ function ChatRoom() {
             userRef.update({status: 'offline'});
           }
         });
-        history.goBack();
+        history.push("/RoomList");
     }
 
     return (
