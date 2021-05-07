@@ -1,0 +1,1 @@
+export { AuthProvider as default } from './AuthContext';

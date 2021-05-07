@@ -1,25 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component, Suspense, lazy} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import LogIn from './components/LogIn';
-import SignUp from './components/SignUp';
-import { AuthProvider } from './components/AuthContext';
-import PrivateRoute from './components/PrivateRoute';
-import ForgotPassword from './components/ForgotPassword';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Offer from './components/Offers';
-import Profile from './components/Profiles';
-import CreateBidPost from './components/CreateBidPosts';
-import CreateOfferPost from './components/CreateOfferPosts';
-import ViewProduct from './components/ViewProducts';
-import RoomList from './components/RoomList';
-import ChatRoom from './components/ChatRoom';
-import AddRoom from './components/AddRoom';
-import ViewProfile from './components/ViewProfiles';
+import { Spinner } from 'react-bootstrap';
+const Home = lazy(() => import('./components/Home'));
+const LogIn = lazy(() => import('./components/LogIn'));
+const SignUp = lazy(() => import('./components/SignUp'));
+const ForgotPassword = lazy(() => import('./components/ForgotPassword'));
+const AuthProvider = lazy(() => import('./components/AuthProvider'));
+const PrivateRoute = lazy(() => import('./components/PrivateRoute'));
+const Offer = lazy(() => import('./components/Offers'));
+const Profile = lazy(() => import('./components/Profiles'));
+const CreateBidPost = lazy(() => import('./components/CreateBidPosts'));
+const CreateOfferPost = lazy(() => import('./components/CreateOfferPosts'));
+const ViewProduct = lazy(() => import('./components/ViewProducts'));
+const RoomList = lazy(() => import('./components/RoomList'));
+const ChatRoom = lazy(() => import('./components/ChatRoom'));
+const AddRoom = lazy(() => import('./components/AddRoom'));
+const ViewProfile = lazy(() => import('./components/ViewProfiles'));
+
 
 class App extends Component {
   render () {
     return (
+      <Suspense fallback={<Spinner />}>
       <AuthProvider>
         <Router>
           <Switch>
@@ -37,8 +40,11 @@ class App extends Component {
             <PrivateRoute exact path="/ChatRoom/:room" component={ChatRoom}/>
             <PrivateRoute exact path="/AddRoom" component={AddRoom}/>
           </Switch>
+          
         </Router>
       </AuthProvider>
+      </Suspense>
+     
     );
   };
 }
