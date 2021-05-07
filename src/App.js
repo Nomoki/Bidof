@@ -1,4 +1,4 @@
-import React, {Component, Suspense, lazy} from 'react';
+import React, {Component, Suspense, lazy, PureComponent} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Spinner } from 'react-bootstrap';
@@ -19,7 +19,7 @@ const AddRoom = lazy(() => import('./components/AddRoom'));
 const ViewProfile = lazy(() => import('./components/ViewProfiles'));
 
 
-class App extends Component {
+class App extends PureComponent {
   render () {
     return (
       <Suspense fallback={<Spinner color="primary"/>}>
