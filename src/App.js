@@ -22,7 +22,7 @@ const ViewProfile = lazy(() => import('./components/ViewProfiles'));
 class App extends Component {
   render () {
     return (
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<Spinner color="primary"/>}>
       <AuthProvider>
         <Router>
           <Switch>
